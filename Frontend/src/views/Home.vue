@@ -18,14 +18,7 @@
         cols="4"
         class="mt-4"
       >
-        <v-select
-          v-model="chosenData.portal"
-          :items="portalList"
-          label="Портал"
-          item-text="name"
-          return-object
-          dense
-        />
+
       </v-col>
     </v-row>
   </v-container>
