@@ -28,6 +28,18 @@ namespace parsing_api.Controllers
             return Ok("Test passed");
         }
 
+        /// <summary>
+        /// Тест метод для проверки дступности API
+        /// </summary>
+        /// <returns></returns>
+        [Route("api/regions")]
+        [HttpGet]
+        public ActionResult<string> GetRegions()
+        {
+            var regions = DataBase.GetRegions();
+            return Ok(regions);
+        }
+
         [Route("api/log/count")]
         [HttpGet]
         public ActionResult<string> LogCount()

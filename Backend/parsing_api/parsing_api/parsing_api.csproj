@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <None Update="parsing_api.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

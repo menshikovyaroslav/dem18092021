@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace parsing_api.Models
 {
-    [Table("parsingobject")]
-    public class ParsingObject
+    [Table("regions")]
+    public class Region
     {
         [Column("id")]
-        public long Id { get; set; }
-        [Column("number")]
-        public string Number { get; set; }
-        [Column("time")]
-        public DateTime Time { get; set; }
+        public int Id { get; set; }
+        [Column("name")]
+        public string Name { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using parsing_api.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,24 @@ namespace parsing_api.Data
             }
 
             return count;
+        }
+
+        public static List<Region> GetRegions()
+        {
+            var result = new List<Region>();
+            try
+            {
+                using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
+                {
+                    result = db.Regions.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Classes.Log.Instance.Error(1, ex.Message);
+            }
+
+            return result;
         }
     }
 }
