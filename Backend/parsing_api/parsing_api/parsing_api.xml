@@ -15,7 +15,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:parsing_api.Controllers.ParsingController.GetByNumber(parsing_api.Models.FrontRequest)">
+        <member name="M:parsing_api.Controllers.ParsingController.GetByParameters(parsing_api.Models.FrontRequest)">
             <summary>
             Поиск информации по заданным параметрам
             </summary>
