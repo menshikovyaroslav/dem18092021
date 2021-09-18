@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace parsing_api.Classes
+namespace Support
 {
     /// <summary>
     /// Класс - логгер. Паттерн одиночка. Пишет инфо и ошибки в файлы в папку Log
