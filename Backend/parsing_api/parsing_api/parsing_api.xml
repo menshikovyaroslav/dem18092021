@@ -423,20 +423,25 @@
             <param name="html"></param>
             <returns></returns>
         </member>
-        <member name="T:parsing_api.Models.Portals.PravosudiePortal">
+        <member name="T:parsing_api.Models.Portals.Pravosudie.PravosudieRoot">
+            <summary>
+            Корневой элемент объекта данных Post-запроса
+            </summary>
+        </member>
+        <member name="T:parsing_api.Models.Portals.Pravosudie.PravosudiePortal">
             <summary>
             Веб-портал ГАС Правосудие
             https://bsr.sudrf.ru/
             </summary>
         </member>
-        <member name="M:parsing_api.Models.Portals.PravosudiePortal.GetHtml(parsing_api.Models.ParsingRequest)">
+        <member name="M:parsing_api.Models.Portals.Pravosudie.PravosudiePortal.GetHtml(parsing_api.Models.ParsingRequest)">
             <summary>
             Получить HTML-код
             </summary>
             <param name="parsingRequest"></param>
             <returns></returns>
         </member>
-        <member name="M:parsing_api.Models.Portals.PravosudiePortal.ParseHtml(System.String)">
+        <member name="M:parsing_api.Models.Portals.Pravosudie.PravosudiePortal.ParseHtml(System.String)">
             <summary>
             Парсинг HTML-кода в объект ParsingResponse
             </summary>

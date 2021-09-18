@@ -1,6 +1,7 @@
 ﻿using parsing_api.Data;
 using parsing_api.Models;
 using parsing_api.Models.Portals;
+using parsing_api.Models.Portals.Pravosudie;
 
 namespace parsing_api.Classes
 {

@@ -9,8 +9,9 @@
         /// Метод получения HTML от веб-портала 
         /// </summary>
         /// <param name="parsingRequest"></param>
+        /// <param name="clause"></param>
         /// <returns></returns>
-        public string GetHtml(ParsingRequest parsingRequest);
+        public string GetHtml(ParsingRequest parsingRequest, int clause);
 
         /// <summary>
         /// Парсинг полученного HTML портала
