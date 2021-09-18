@@ -4,6 +4,17 @@
         <name>parsing_api</name>
     </assembly>
     <members>
+        <member name="T:parsing_api.Classes.ParsingFactory">
+            <summary>
+            Класс для обработки задач парсинга данных
+            </summary>
+        </member>
+        <member name="M:parsing_api.Classes.ParsingFactory.Parse(parsing_api.Models.ParsingRequest)">
+            <summary>
+            Метод инициализации парсинга данных
+            </summary>
+            <param name="parsingRequest"></param>
+        </member>
         <member name="T:parsing_api.Controllers.ParsingController">
             <summary>
             Основной контроллер API - методы работы для парсинга данных
@@ -17,7 +28,13 @@
         </member>
         <member name="M:parsing_api.Controllers.ParsingController.GetRegions">
             <summary>
-            Тест метод для проверки дступности API
+            Загрузка регионов из БД
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Controllers.ParsingController.GetPortals">
+            <summary>
+            Загрузка списка порталов
             </summary>
             <returns></returns>
         </member>
@@ -26,6 +43,13 @@
             Поиск информации по заданным параметрам
             </summary>
             <param name="frontRequest">Объект с заданными параметрами</param>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Controllers.ParsingController.SetParsing(parsing_api.Models.ParsingRequest)">
+            <summary>
+            Запрос на создание задания парсинга определенного веб-портала на указанную дату
+            </summary>
+            <param name="parsingRequest"></param>
             <returns></returns>
         </member>
         <member name="T:parsing_api.Models.FrontRequest">

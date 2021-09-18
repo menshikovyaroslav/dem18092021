@@ -18,7 +18,7 @@ namespace parsing_api.Data
             {
                 using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
                 {
-                    count = db.ParsingObjects.Count();
+                    count = db.ParsingRequests.Count();
                 }
             }
             catch (Exception ex)
@@ -42,6 +42,24 @@ namespace parsing_api.Data
             catch (Exception ex)
             {
                 Classes.Log.Instance.Error(1, ex.Message);
+            }
+
+            return result;
+        }
+
+        public static List<Portal> GetPortals()
+        {
+            var result = new List<Portal>();
+            try
+            {
+                using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
+                {
+                    result = db.Portals.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Classes.Log.Instance.Error(2, ex.Message);
             }
 
             return result;

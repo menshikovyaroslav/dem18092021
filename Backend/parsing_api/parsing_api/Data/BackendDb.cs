@@ -9,8 +9,9 @@ namespace parsing_api.Data
 {
     public class BackendDb : DbContext
     {
-        public DbSet<ParsingObject> ParsingObjects { get; set; }
+        public DbSet<ParsingRequest> ParsingRequests { get; set; }
         public DbSet<Region> Regions { get; set; }
+        public DbSet<Portal> Portals { get; set; }
         public BackendDb(DbContextOptions<BackendDb> options) : base(options) { }
     }
 }
