@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace parsing_api.Models.Portals
+﻿namespace parsing_api.Models.Portals
 {
     /// <summary>
     /// Интерфейс объекта веб-портала

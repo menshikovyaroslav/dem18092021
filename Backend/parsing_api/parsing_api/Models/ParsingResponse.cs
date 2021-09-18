@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace parsing_api.Models
 {
@@ -64,11 +61,6 @@ namespace parsing_api.Models
         /// Дата апелляции
         /// </summary>
         public string DateAppeal { get; set; }
-
-        /// <summary>
-        /// Пол ответчиков
-        /// </summary>
-        public string Sex { get; set; }
 
         /// <summary>
         /// Пол ответчиков

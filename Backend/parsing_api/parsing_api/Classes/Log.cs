@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace parsing_api.Classes
 {
+    /// <summary>
+    /// Класс - логгер. Паттерн одиночка. Пишет инфо и ошибки в файлы в папку Log
+    /// </summary>
     public sealed class Log
     {
         private static volatile Log _instance;
@@ -19,9 +19,19 @@ namespace parsing_api.Classes
             LogDirectory = Path.Combine(CurrentDirectory, "log");
         }
 
-        public string CurrentDirectory { get; set; }
-        public string LogDirectory { get; set; }
+        /// <summary>
+        /// Директория где выполняется приложение
+        /// </summary>
+        private string CurrentDirectory { get; set; }
 
+        /// <summary>
+        /// Директория для записи логов
+        /// </summary>
+        private string LogDirectory { get; set; }
+
+        /// <summary>
+        /// Реализация Одиночки
+        /// </summary>
         public static Log Instance
         {
             get
@@ -37,17 +47,31 @@ namespace parsing_api.Classes
             }
         }
 
+        /// <summary>
+        /// Публичный метод для записи ошибок
+        /// </summary>
+        /// <param name="errorNumber"></param>
+        /// <param name="errorText"></param>
         public void Error(int errorNumber, string errorText)
         {
             // Ошибки пишем в лог всегда
             Add($"Ошибка {(errorNumber.ToString()).PadLeft(4, '0')}: {errorText}", "[ERROR]");
         }
 
+        /// <summary>
+        /// Публичный метод для записи дебаг информации
+        /// </summary>
+        /// <param name="log"></param>
         public void Info(string log)
         {
             Add(log, "[INFO]");
         }
 
+        /// <summary>
+        /// Запись собранной информации в файл
+        /// </summary>
+        /// <param name="log"></param>
+        /// <param name="logLevel"></param>
         private void Add(string log, string logLevel)
         {
             lock (_logLocker)

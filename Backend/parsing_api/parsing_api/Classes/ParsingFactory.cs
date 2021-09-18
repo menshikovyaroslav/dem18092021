@@ -1,10 +1,6 @@
 ﻿using parsing_api.Data;
 using parsing_api.Models;
 using parsing_api.Models.Portals;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace parsing_api.Classes
 {

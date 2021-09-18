@@ -1,17 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using parsing_api.Classes;
 using parsing_api.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace parsing_api.Data
 {
+    /// <summary>
+    /// Класс для выполнения запросов в БД
+    /// </summary>
     public static class DataBase
     {
+        /// <summary>
+        /// Строка подключения к БД. Сервер находится в локальной сети, поэтому в настройки не вынесено. Надеюсь не страшно )
+        /// </summary>
         const string connString = "Server=127.0.0.1;Port=5432;User Id=backenduser;Password=Qwerty123;Database=demhack3;CommandTimeOut=5000";
 
+        /// <summary>
+        /// Тестовый метод, который планируется убрать или поменять
+        /// </summary>
+        /// <returns></returns>
         public static int LogCount()
         {
             var count = 0;
@@ -30,6 +38,10 @@ namespace parsing_api.Data
             return count;
         }
 
+        /// <summary>
+        /// Получить список регионов
+        /// </summary>
+        /// <returns></returns>
         public static List<Region> GetRegions()
         {
             var result = new List<Region>();
@@ -48,6 +60,10 @@ namespace parsing_api.Data
             return result;
         }
 
+        /// <summary>
+        /// Получить список веб-порталов для парсинга
+        /// </summary>
+        /// <returns></returns>
         public static List<Portal> GetPortals()
         {
             var result = new List<Portal>();

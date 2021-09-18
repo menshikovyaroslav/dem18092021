@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using parsing_api.Classes;
 using parsing_api.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace parsing_api.Controllers
 {

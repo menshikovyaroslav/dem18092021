@@ -4,6 +4,57 @@
         <name>parsing_api</name>
     </assembly>
     <members>
+        <member name="T:parsing_api.Classes.AllowCrossSiteJson">
+            <summary>
+            Аттрибут для фронтенда - без него не работало
+            </summary>
+        </member>
+        <member name="M:parsing_api.Classes.AllowCrossSiteJson.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Переопределен метод для добавления заголовка
+            </summary>
+            <param name="filterContext"></param>
+        </member>
+        <member name="T:parsing_api.Classes.Log">
+            <summary>
+            Класс - логгер. Паттерн одиночка. Пишет инфо и ошибки в файлы в папку Log
+            </summary>
+        </member>
+        <member name="P:parsing_api.Classes.Log.CurrentDirectory">
+            <summary>
+            Директория где выполняется приложение
+            </summary>
+        </member>
+        <member name="P:parsing_api.Classes.Log.LogDirectory">
+            <summary>
+            Директория для записи логов
+            </summary>
+        </member>
+        <member name="P:parsing_api.Classes.Log.Instance">
+            <summary>
+            Реализация Одиночки
+            </summary>
+        </member>
+        <member name="M:parsing_api.Classes.Log.Error(System.Int32,System.String)">
+            <summary>
+            Публичный метод для записи ошибок
+            </summary>
+            <param name="errorNumber"></param>
+            <param name="errorText"></param>
+        </member>
+        <member name="M:parsing_api.Classes.Log.Info(System.String)">
+            <summary>
+            Публичный метод для записи дебаг информации
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:parsing_api.Classes.Log.Add(System.String,System.String)">
+            <summary>
+            Запись собранной информации в файл
+            </summary>
+            <param name="log"></param>
+            <param name="logLevel"></param>
+        </member>
         <member name="T:parsing_api.Classes.ParsingFactory">
             <summary>
             Класс для обработки задач парсинга данных
@@ -90,6 +141,65 @@
         <member name="M:parsing_api.Controllers.TestController.Test">
             <summary>
             Тест метод для проверки доступности API
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:parsing_api.Data.BackendDb">
+            <summary>
+            Контест для работы с БД
+            </summary>
+        </member>
+        <member name="P:parsing_api.Data.BackendDb.ParsingRequests">
+            <summary>
+            Данные запросов парсинга
+            </summary>
+        </member>
+        <member name="P:parsing_api.Data.BackendDb.Regions">
+            <summary>
+            Таблица регионов страны
+            </summary>
+        </member>
+        <member name="P:parsing_api.Data.BackendDb.Portals">
+            <summary>
+            Таблица веб-порталов для парсинга
+            </summary>
+        </member>
+        <member name="P:parsing_api.Data.BackendDb.ParsingJobs">
+            <summary>
+            Данные запросов на парсинг
+            </summary>
+        </member>
+        <member name="M:parsing_api.Data.BackendDb.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{parsing_api.Data.BackendDb})">
+            <summary>
+            Инициализация контекста работы с БД
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="T:parsing_api.Data.DataBase">
+            <summary>
+            Класс для выполнения запросов в БД
+            </summary>
+        </member>
+        <member name="F:parsing_api.Data.DataBase.connString">
+            <summary>
+            Строка подключения к БД. Сервер находится в локальной сети, поэтому в настройки не вынесено. Надеюсь не страшно )
+            </summary>
+        </member>
+        <member name="M:parsing_api.Data.DataBase.LogCount">
+            <summary>
+            Тестовый метод, который планируется убрать или поменять
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Data.DataBase.GetRegions">
+            <summary>
+            Получить список регионов
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Data.DataBase.GetPortals">
+            <summary>
+            Получить список веб-порталов для парсинга
             </summary>
             <returns></returns>
         </member>
@@ -254,11 +364,6 @@
             Дата апелляции
             </summary>
         </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Sex">
-            <summary>
-            Пол ответчиков
-            </summary>
-        </member>
         <member name="P:parsing_api.Models.ParsingResponse.Gender">
             <summary>
             Пол ответчиков
@@ -277,6 +382,26 @@
         <member name="P:parsing_api.Models.ParsingResponse.DecisionText">
             <summary>
             Текст решения
+            </summary>
+        </member>
+        <member name="T:parsing_api.Models.Portal">
+            <summary>
+            Модель объекта веб-портала для парсинга
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.Portal.Id">
+            <summary>
+            Id веб-портала
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.Portal.Name">
+            <summary>
+            Имя веб-портала (название, описание)
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.Portal.Link">
+            <summary>
+            Ссылка на веб-портал
             </summary>
         </member>
         <member name="T:parsing_api.Models.Portals.IPortal">
@@ -303,6 +428,82 @@
             Веб-портал ГАС Правосудие
             https://bsr.sudrf.ru/
             </summary>
+        </member>
+        <member name="M:parsing_api.Models.Portals.PravosudiePortal.GetHtml(parsing_api.Models.ParsingRequest)">
+            <summary>
+            Получить HTML-код
+            </summary>
+            <param name="parsingRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Models.Portals.PravosudiePortal.ParseHtml(System.String)">
+            <summary>
+            Парсинг HTML-кода в объект ParsingResponse
+            </summary>
+            <param name="html"></param>
+            <returns></returns>
+        </member>
+        <member name="T:parsing_api.Models.Region">
+            <summary>
+            Модель объекта региона страны
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.Region.Id">
+            <summary>
+            Id региона
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.Region.Name">
+            <summary>
+            Название региона
+            </summary>
+        </member>
+        <member name="T:parsing_api.Program">
+            <summary>
+            Главный класс приложения
+            </summary>
+        </member>
+        <member name="M:parsing_api.Program.Main(System.String[])">
+            <summary>
+            Точка входа в приложение
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:parsing_api.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Установка конфигурации хоста
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:parsing_api.Startup">
+            <summary>
+            Класс при запуске приложения
+            </summary>
+        </member>
+        <member name="M:parsing_api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Конструктор класса запуска
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:parsing_api.Startup.Configuration">
+            <summary>
+            Конфигурация приложения
+            </summary>
+        </member>
+        <member name="M:parsing_api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Добавление сервисов в приложение
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:parsing_api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Настройка сервисов приложения
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
         </member>
     </members>
 </doc>

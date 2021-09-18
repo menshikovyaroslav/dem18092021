@@ -7,11 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Cache;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Request.Support
 {
+    /// <summary>
+    /// Метод реализации Get запроса
+    /// </summary>
     public class GetRequest
     {
         #region private fields

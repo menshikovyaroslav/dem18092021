@@ -1,16 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace parsing_api.Models
 {
+    /// <summary>
+    /// Модель объекта региона страны
+    /// </summary>
     [Table("regions")]
     public class Region
     {
+        /// <summary>
+        /// Id региона
+        /// </summary>
         [Column("id")]
         public long Id { get; set; }
+
+        /// <summary>
+        /// Название региона
+        /// </summary>
         [Column("name")]
         public string Name { get; set; }
     }

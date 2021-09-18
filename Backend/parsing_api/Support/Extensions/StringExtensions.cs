@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Support.Extensions
+﻿namespace Support.Extensions
 {
+    /// <summary>
+    /// Статический класс для расширения методов строки
+    /// </summary>
     public static class StringExtensions
     {
         /// <summary>
