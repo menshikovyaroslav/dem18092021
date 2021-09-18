@@ -4,5 +4,38 @@
         <name>parsing_api</name>
     </assembly>
     <members>
+        <member name="T:parsing_api.Controllers.ParsingController">
+            <summary>
+            Основной контроллер API - методы работы для парсинга данных
+            </summary>
+        </member>
+        <member name="M:parsing_api.Controllers.ParsingController.Test">
+            <summary>
+            Тест метод для проверки дступности API
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Controllers.ParsingController.GetByNumber(parsing_api.Models.FrontRequest)">
+            <summary>
+            Поиск информации по заданным параметрам
+            </summary>
+            <param name="frontRequest">Объект с заданными параметрами</param>
+            <returns></returns>
+        </member>
+        <member name="T:parsing_api.Models.FrontRequest">
+            <summary>
+            Объект данных от frontend-части в API
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.FrontRequest.Number">
+            <summary>
+            Номер дела
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.FrontRequest.Region">
+            <summary>
+            Регион
+            </summary>
+        </member>
     </members>
 </doc>
