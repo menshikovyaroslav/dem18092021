@@ -8,9 +8,9 @@ namespace parsing_api.Models
 {
     public class ParsingRequest
     {
-        [Column("id")]
-        public int Id { get; set; }
-        [Column("name")]
-        public string Name { get; set; }
+        public int PortalId { get; set; }
+        public DateTime TimeFrom { get; set; }
+        public DateTime TimeTo { get; set; }
+        public Guid JobId { get; set; }
     }
 }

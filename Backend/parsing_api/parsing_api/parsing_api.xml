@@ -4,6 +4,17 @@
         <name>parsing_api</name>
     </assembly>
     <members>
+        <member name="T:parsing_api.Classes.ParsingFactory">
+            <summary>
+            Класс для обработки задач парсинга данных
+            </summary>
+        </member>
+        <member name="M:parsing_api.Classes.ParsingFactory.Parse(parsing_api.Models.ParsingRequest)">
+            <summary>
+            Метод инициализации парсинга данных
+            </summary>
+            <param name="parsingRequest"></param>
+        </member>
         <member name="T:parsing_api.Controllers.ParsingController">
             <summary>
             Основной контроллер API - методы работы для парсинга данных
@@ -34,11 +45,11 @@
             <param name="frontRequest">Объект с заданными параметрами</param>
             <returns></returns>
         </member>
-        <member name="M:parsing_api.Controllers.ParsingController.CreateParsing(parsing_api.Models.FrontRequest)">
+        <member name="M:parsing_api.Controllers.ParsingController.SetParsing(parsing_api.Models.ParsingRequest)">
             <summary>
             Запрос на создание задания парсинга определенного веб-портала на указанную дату
             </summary>
-            <param name="frontRequest"></param>
+            <param name="parsingRequest"></param>
             <returns></returns>
         </member>
         <member name="T:parsing_api.Models.FrontRequest">

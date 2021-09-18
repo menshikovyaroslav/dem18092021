@@ -90,14 +90,17 @@ namespace parsing_api.Controllers
         /// <summary>
         /// Запрос на создание задания парсинга определенного веб-портала на указанную дату
         /// </summary>
-        /// <param name="frontRequest"></param>
+        /// <param name="parsingRequest"></param>
         /// <returns></returns>
         [Route("api/setparsing")]
         [AllowCrossSiteJson]
         [HttpPost]
-        public ActionResult<string> SetParsing(FrontRequest frontRequest)
+        public ActionResult<string> SetParsing(ParsingRequest parsingRequest)
         {
-            return Ok($"frontRequest: {frontRequest.Number}");
+            // получили запрос на парсинг, отправляем задачу на исполнение
+            ParsingFactory.Parse(parsingRequest);
+
+            return Ok();
         }
     }
 }
