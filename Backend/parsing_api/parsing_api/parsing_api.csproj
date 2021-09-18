@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Support\Support.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="parsing_api.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
