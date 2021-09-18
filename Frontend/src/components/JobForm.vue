@@ -2,7 +2,7 @@
 	<v-form>
 		<v-select
 			v-model="chosenData.region"
-			:items="regionList"
+			:items="regionsList"
 			label="Регион"
 			item-text="name"
 			return-object
@@ -20,7 +20,13 @@
 </template>
 
 <script>
-	export default { name: "JobForm" };
+	import { mapState } from "vuex";
+	export default {
+		name: "JobForm",
+		computed: {
+			...mapState(["regionsList", "portalsList"]),
+		},
+	};
 </script>
 
 <style lang="scss" scoped>

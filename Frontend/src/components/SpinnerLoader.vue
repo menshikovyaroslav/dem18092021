@@ -41,7 +41,7 @@
 				position: absolute;
 				width: 6px;
 				height: 6px;
-				background-color: $color-primary;
+				background-color: blue;
 				border-radius: 50%;
 				animation: lds-default 1.2s linear infinite;
 
