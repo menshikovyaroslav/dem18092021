@@ -18,36 +18,6 @@ namespace parsing_api.Controllers
     [ApiController]
     public class ParsingController : ControllerBase
     {
-        [Route("api/log/count")]
-        [AllowCrossSiteJson]
-        [HttpGet]
-        public ActionResult<string> LogCount()
-        {
-            var count = 0;
-            try
-            {
-                count = DataBase.LogCount();
-            }
-            catch (Exception ex)
-            {
-                Classes.Log.Instance.Info(ex.Message);
-            }
-
-            return Ok($"count: {count}");
-        }
-
-        /// <summary>
-        /// Поиск информации по заданным параметрам
-        /// </summary>
-        /// <param name="frontRequest">Объект с заданными параметрами</param>
-        /// <returns></returns>
-        [Route("api/getbyparameters")]
-        [AllowCrossSiteJson]
-        [HttpPost]
-        public ActionResult<string> GetByParameters(FrontRequest frontRequest)
-        {
-            return Ok($"frontRequest: {frontRequest.Number}");
-        }
 
         /// <summary>
         /// Запрос на создание задания парсинга определенного веб-портала на указанную дату

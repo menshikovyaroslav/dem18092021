@@ -32,7 +32,7 @@ namespace parsing_api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SecurityBand DemHack Parsing Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SecurityBand DemHack3 Parsing Api", Version = "v1" });
 
                 var filepath = Path.Combine("parsing_api.xml");
                 c.IncludeXmlComments(filepath);
@@ -51,7 +51,7 @@ namespace parsing_api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SecurityBand DemHack Parsing Api");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SecurityBand DemHack3 Parsing Api");
             });
 
             app.UseRouting();

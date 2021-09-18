@@ -22,6 +22,24 @@
             <param name="portalId"></param>
             <returns></returns>
         </member>
+        <member name="T:parsing_api.Controllers.DataController">
+            <summary>
+            Контроллер для получения клиентской информации из БД
+            </summary>
+        </member>
+        <member name="M:parsing_api.Controllers.DataController.LogCount">
+            <summary>
+            Ненужный запрос - скоро удалим
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Controllers.DataController.GetByParameters(parsing_api.Models.FrontRequest)">
+            <summary>
+            Поиск информации по заданным параметрам
+            </summary>
+            <param name="frontRequest">Объект с заданными параметрами</param>
+            <returns></returns>
+        </member>
         <member name="T:parsing_api.Controllers.DictionaryController">
             <summary>
             Методы загрузки словарей из БД
@@ -44,19 +62,6 @@
             Основной контроллер API - методы работы для парсинга данных
             </summary>
         </member>
-        <member name="M:parsing_api.Controllers.ParsingController.Test">
-            <summary>
-            Тест метод для проверки дступности API
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:parsing_api.Controllers.ParsingController.GetByParameters(parsing_api.Models.FrontRequest)">
-            <summary>
-            Поиск информации по заданным параметрам
-            </summary>
-            <param name="frontRequest">Объект с заданными параметрами</param>
-            <returns></returns>
-        </member>
         <member name="M:parsing_api.Controllers.ParsingController.SetParsing(parsing_api.Models.ParsingRequest)">
             <summary>
             Запрос на создание задания парсинга определенного веб-портала на указанную дату
@@ -75,6 +80,17 @@
             Получить задачу по ее Id
             </summary>
             <param name="jobId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:parsing_api.Controllers.TestController">
+            <summary>
+            Контроллер для тест запросов
+            </summary>
+        </member>
+        <member name="M:parsing_api.Controllers.TestController.Test">
+            <summary>
+            Тест метод для проверки доступности API
+            </summary>
             <returns></returns>
         </member>
         <member name="M:parsing_api.Data.DataBase.CreateJob(parsing_api.Models.ParsingRequest)">
