@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using parsing_api.Models;
+using Support;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace parsing_api.Data
             }
             catch (Exception ex)
             {
-                Classes.Log.Instance.Info(ex.Message);
+                Log.Instance.Error(5, ex.Message);
             }
 
             return count;
@@ -54,7 +55,7 @@ namespace parsing_api.Data
             }
             catch (Exception ex)
             {
-                Classes.Log.Instance.Error(1, ex.Message);
+                Log.Instance.Error(1, ex.Message);
             }
 
             return result;
@@ -76,7 +77,7 @@ namespace parsing_api.Data
             }
             catch (Exception ex)
             {
-                Classes.Log.Instance.Error(2, ex.Message);
+                Log.Instance.Error(2, ex.Message);
             }
 
             return result;
@@ -109,7 +110,7 @@ namespace parsing_api.Data
             }
             catch (Exception ex)
             {
-                Classes.Log.Instance.Error(4, ex.Message);
+                Log.Instance.Error(4, ex.Message);
             }
         }
 
@@ -129,7 +130,7 @@ namespace parsing_api.Data
             }
             catch (Exception ex)
             {
-                Classes.Log.Instance.Error(2, ex.Message);
+                Log.Instance.Error(2, ex.Message);
             }
 
             return result;
@@ -152,7 +153,7 @@ namespace parsing_api.Data
             }
             catch (Exception ex)
             {
-                Classes.Log.Instance.Error(2, ex.Message);
+                Log.Instance.Error(6, ex.Message);
             }
 
             return result;

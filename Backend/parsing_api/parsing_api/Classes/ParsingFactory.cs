@@ -2,6 +2,7 @@
 using parsing_api.Models;
 using parsing_api.Models.Portals;
 using parsing_api.Models.Portals.Pravosudie;
+using Support;
 
 namespace parsing_api.Classes
 {
@@ -27,7 +28,7 @@ namespace parsing_api.Classes
             DataBase.CreateJob(parsingRequest);
 
             // получить HTML-код веб-портала
-            var html = portal.GetHtml(parsingRequest);
+            var html = portal.GetHtml(parsingRequest, 137);
 
             // парсинг HTML кода в красивый универсальный объект
             var parsingResponse = portal.ParseHtml(html);

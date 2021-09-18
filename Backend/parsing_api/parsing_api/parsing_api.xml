@@ -15,46 +15,6 @@
             </summary>
             <param name="filterContext"></param>
         </member>
-        <member name="T:parsing_api.Classes.Log">
-            <summary>
-            Класс - логгер. Паттерн одиночка. Пишет инфо и ошибки в файлы в папку Log
-            </summary>
-        </member>
-        <member name="P:parsing_api.Classes.Log.CurrentDirectory">
-            <summary>
-            Директория где выполняется приложение
-            </summary>
-        </member>
-        <member name="P:parsing_api.Classes.Log.LogDirectory">
-            <summary>
-            Директория для записи логов
-            </summary>
-        </member>
-        <member name="P:parsing_api.Classes.Log.Instance">
-            <summary>
-            Реализация Одиночки
-            </summary>
-        </member>
-        <member name="M:parsing_api.Classes.Log.Error(System.Int32,System.String)">
-            <summary>
-            Публичный метод для записи ошибок
-            </summary>
-            <param name="errorNumber"></param>
-            <param name="errorText"></param>
-        </member>
-        <member name="M:parsing_api.Classes.Log.Info(System.String)">
-            <summary>
-            Публичный метод для записи дебаг информации
-            </summary>
-            <param name="log"></param>
-        </member>
-        <member name="M:parsing_api.Classes.Log.Add(System.String,System.String)">
-            <summary>
-            Запись собранной информации в файл
-            </summary>
-            <param name="log"></param>
-            <param name="logLevel"></param>
-        </member>
         <member name="T:parsing_api.Classes.ParsingFactory">
             <summary>
             Класс для обработки задач парсинга данных
@@ -409,11 +369,12 @@
             Интерфейс объекта веб-портала
             </summary>
         </member>
-        <member name="M:parsing_api.Models.Portals.IPortal.GetHtml(parsing_api.Models.ParsingRequest)">
+        <member name="M:parsing_api.Models.Portals.IPortal.GetHtml(parsing_api.Models.ParsingRequest,System.Int32)">
             <summary>
             Метод получения HTML от веб-портала 
             </summary>
             <param name="parsingRequest"></param>
+            <param name="clause"></param>
             <returns></returns>
         </member>
         <member name="M:parsing_api.Models.Portals.IPortal.ParseHtml(System.String)">
@@ -434,7 +395,7 @@
             https://bsr.sudrf.ru/
             </summary>
         </member>
-        <member name="M:parsing_api.Models.Portals.Pravosudie.PravosudiePortal.GetHtml(parsing_api.Models.ParsingRequest)">
+        <member name="M:parsing_api.Models.Portals.Pravosudie.PravosudiePortal.GetHtml(parsing_api.Models.ParsingRequest,System.Int32)">
             <summary>
             Получить HTML-код
             </summary>

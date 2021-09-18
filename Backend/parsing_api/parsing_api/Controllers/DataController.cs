@@ -2,6 +2,7 @@
 using parsing_api.Classes;
 using parsing_api.Data;
 using parsing_api.Models;
+using Support;
 using System;
 
 namespace parsing_api.Controllers
@@ -27,7 +28,7 @@ namespace parsing_api.Controllers
             }
             catch (Exception ex)
             {
-                Classes.Log.Instance.Info(ex.Message);
+                Log.Instance.Info(ex.Message);
             }
 
             return Ok($"count: {count}");
