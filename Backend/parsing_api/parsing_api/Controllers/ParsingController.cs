@@ -18,18 +18,6 @@ namespace parsing_api.Controllers
     [ApiController]
     public class ParsingController : ControllerBase
     {
-        /// <summary>
-        /// Тест метод для проверки дступности API
-        /// </summary>
-        /// <returns></returns>
-        [Route("api/test")]
-        [AllowCrossSiteJson]
-        [HttpGet]
-        public ActionResult<string> Test()
-        {
-            return Ok("Test passed");
-        }
-
         [Route("api/log/count")]
         [AllowCrossSiteJson]
         [HttpGet]
