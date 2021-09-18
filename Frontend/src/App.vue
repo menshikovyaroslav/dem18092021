@@ -3,7 +3,7 @@
 		<v-app-bar app color="primary" dark>
 			<v-spacer></v-spacer>
 			<div class="d-flex">
-				<h2>Security Band</h2>
+				<h2>Инфографика судебной информации</h2>
 			</div>
 			<v-spacer></v-spacer>
 		</v-app-bar>
