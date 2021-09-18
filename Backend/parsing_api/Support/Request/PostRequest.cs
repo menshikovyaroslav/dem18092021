@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Cache;
@@ -10,9 +9,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Request.Support
+namespace Support.Request
 {
-    public class GetRequest
+    public class PostRequest
     {
         #region private fields
 
@@ -25,26 +24,29 @@ namespace Request.Support
         #region public settings
 
         public bool NoCachePolicy { get; set; }
-        public bool UseUnsafeHeaderParsing { get; set; }
+        public string Response { get; set; }
+        public string ResponseEncoding { get; set; }
+        public string Data { get; set; }
+        public byte[] ByteData { get; set; }
         public string Address { get; set; }
         public string Accept { get; set; }
-        public string Referer { get; set; }
         public string Host { get; set; }
-        public bool? KeepAlive { get; set; }
+        public string ContentType { get; set; }
+        public string Referer { get; set; }
+        public bool KeepAlive { get; set; }
         public bool KeepAliveTrick { get; set; }
         public bool? Expect100Continue { get; set; }
-        public string Response { get; private set; }
+        public string UserAgent { get; set; }
         public bool? AllowAutoRedirect { get; set; }
         public WebHeaderCollection ResponseHeaders { get; private set; }
         public WebHeaderCollection RequestHeaders { get; private set; }
-        public string UserAgent { get; set; }
         public WebProxy Proxy { get; set; }
         public bool TurnOffProxy { get; set; }
         public int TimeOut { get; set; }
 
         #endregion
 
-        public GetRequest()
+        public PostRequest()
         {
             _headers = new Dictionary<string, string>();
         }
@@ -53,11 +55,9 @@ namespace Request.Support
         public void Run(ref CookieContainer cookies)
         {
             _request = (HttpWebRequest)WebRequest.Create(Address);
-
-            _request.Headers.Add("DNT", "1");
-            _request.Method = "Get";
-            _request.Accept = Accept;
+            _request.Method = "POST";
             _request.Host = Host;
+            _request.Headers.Add("DNT", "1");
 
             if (TurnOffProxy) _request.Proxy = null;
             else _request.Proxy = Proxy;
@@ -69,38 +69,34 @@ namespace Request.Support
             }
             else
             {
-                _request.Timeout = 35000;
-                _request.ReadWriteTimeout = 35000;
+                _request.Timeout = 90000;
+                _request.ReadWriteTimeout = 90000;
             }
 
-            if (NoCachePolicy == false)
-            {
-                var noCachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore);
-                _request.CachePolicy = noCachePolicy;
-            }
+            var noCachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore);
+            _request.CachePolicy = noCachePolicy;
+
+            if (Expect100Continue == true) _request.ServicePoint.Expect100Continue = true;
+            else _request.ServicePoint.Expect100Continue = false;
+
+            _request.ContentType = ContentType;
+            _request.Accept = Accept;
+            _request.Referer = Referer;
+
+            _request.KeepAlive = KeepAlive;
 
             foreach (KeyValuePair<string, string> keyValuePair in _headers)
             {
                 _request.Headers.Add(keyValuePair.Key, keyValuePair.Value);
             }
 
+            _request.CookieContainer = cookies;
+
             if (UserAgent == null) _request.UserAgent = _ie;
             else _request.UserAgent = UserAgent;
 
             if (AllowAutoRedirect != null)
                 _request.AllowAutoRedirect = (bool)AllowAutoRedirect;
-
-            if (KeepAlive != null)
-                _request.KeepAlive = (bool)KeepAlive;
-
-            if (Expect100Continue != null)
-                _request.ServicePoint.Expect100Continue = (bool)Expect100Continue;
-
-
-            if (!Referer.IsEmpty())
-                _request.Referer = Referer;
-
-            _request.CookieContainer = cookies;
 
             if (KeepAliveTrick)
             {
@@ -109,45 +105,26 @@ namespace Request.Support
                 prop.SetValue(sp, (byte)0, null);
             }
 
-            try
+            byte[] sentData;
+            if (ByteData != null) sentData = ByteData;
+            else sentData = Encoding.UTF8.GetBytes(Data);
+
+            _request.ContentLength = sentData.Length;
+            Stream sendStream = _request.GetRequestStream();
+            sendStream.Write(sentData, 0, sentData.Length);
+            sendStream.Close();
+            WebResponse response = _request.GetResponse();
+
+            ResponseHeaders = response.Headers;
+            RequestHeaders = _request.Headers;
+
+            Stream stream = response.GetResponseStream();
+            if (stream != null)
             {
-                HttpWebResponse response = (HttpWebResponse)_request.GetResponse();
-
-                if ((response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Moved || response.StatusCode == HttpStatusCode.Redirect) && response.ContentType.StartsWith("image", StringComparison.OrdinalIgnoreCase))
-                {
-                    // if the remote file was found, download oit
-                    using (Stream inputStream = response.GetResponseStream())
-                    {
-                        byte[] buffer = new byte[64000];
-                        int bytesRead;
-
-                        bytesRead = inputStream.Read(buffer, 0, buffer.Length);
-                        Response = Convert.ToBase64String(buffer, 0, bytesRead);
-                    }
-                }
-                else
-                {
-                    var stream = response.GetResponseStream();
-
-                    if (stream != null) Response = new StreamReader(stream).ReadToEnd();
-                    ResponseHeaders = response.Headers;
-                    RequestHeaders = _request.Headers;
-                }
-
-                response.Close();
+                if (ResponseEncoding.IsEmpty()) Response = new StreamReader(stream).ReadToEnd();
+                else Response = new StreamReader(stream, Encoding.GetEncoding(ResponseEncoding)).ReadToEnd();
             }
-            catch (WebException ex)
-            {
-                using (var stream = ex.Response.GetResponseStream())
-                using (var reader = new StreamReader(stream))
-                {
-                    Response = reader.ReadToEnd();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-
+            response.Close();
         }
 
         // добавить дополнительный заголовок в запрос
