@@ -30,32 +30,6 @@ namespace parsing_api.Controllers
             return Ok("Test passed");
         }
 
-        /// <summary>
-        /// Загрузка регионов из БД
-        /// </summary>
-        /// <returns></returns>
-        [Route("api/regions")]
-        [AllowCrossSiteJson]
-        [HttpGet]
-        public ActionResult<string> GetRegions()
-        {
-            var regions = DataBase.GetRegions();
-            return Ok(regions);
-        }
-
-        /// <summary>
-        /// Загрузка списка порталов
-        /// </summary>
-        /// <returns></returns>
-        [Route("api/portals")]
-        [AllowCrossSiteJson]
-        [HttpGet]
-        public ActionResult<string> GetPortals()
-        {
-            var portals = DataBase.GetPortals();
-            return Ok(portals);
-        }
-
         [Route("api/log/count")]
         [AllowCrossSiteJson]
         [HttpGet]

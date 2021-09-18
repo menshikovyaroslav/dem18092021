@@ -22,6 +22,23 @@
             <param name="portalId"></param>
             <returns></returns>
         </member>
+        <member name="T:parsing_api.Controllers.DictionaryController">
+            <summary>
+            Методы загрузки словарей из БД
+            </summary>
+        </member>
+        <member name="M:parsing_api.Controllers.DictionaryController.GetRegions">
+            <summary>
+            Загрузка регионов из БД
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Controllers.DictionaryController.GetPortals">
+            <summary>
+            Загрузка списка порталов
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:parsing_api.Controllers.ParsingController">
             <summary>
             Основной контроллер API - методы работы для парсинга данных
@@ -30,18 +47,6 @@
         <member name="M:parsing_api.Controllers.ParsingController.Test">
             <summary>
             Тест метод для проверки дступности API
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:parsing_api.Controllers.ParsingController.GetRegions">
-            <summary>
-            Загрузка регионов из БД
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:parsing_api.Controllers.ParsingController.GetPortals">
-            <summary>
-            Загрузка списка порталов
             </summary>
             <returns></returns>
         </member>
