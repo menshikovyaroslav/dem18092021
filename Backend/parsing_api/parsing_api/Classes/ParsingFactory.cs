@@ -21,7 +21,11 @@ namespace parsing_api.Classes
             var portal = GetPortal(parsingRequest.PortalId);
             if (portal == null) Log.Instance.Error(3, "Портал не прописан в методе GetPortal !");
 
+            // получить HTML-код веб-портала
+            var html = portal.GetHtml(parsingRequest);
 
+            // парсинг HTML кода в красивый универсальный объект
+            var parsingResponse = portal.ParseHtml(html);
         }
 
         /// <summary>
