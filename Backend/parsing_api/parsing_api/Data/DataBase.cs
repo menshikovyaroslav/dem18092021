@@ -96,5 +96,50 @@ namespace parsing_api.Data
                 Classes.Log.Instance.Error(4, ex.Message);
             }
         }
+
+        /// <summary>
+        /// Метод получения всех задач в БД
+        /// </summary>
+        /// <returns></returns>
+        public static List<ParsingJob> GetJobs()
+        {
+            var result = new List<ParsingJob>();
+            try
+            {
+                using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
+                {
+                    result = db.ParsingJobs.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Classes.Log.Instance.Error(2, ex.Message);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Метод получения задачи по ее Id
+        /// </summary>
+        /// <param name="guid"></param>
+        /// <returns></returns>
+        public static ParsingJob GetJobById(string guid)
+        {
+            ParsingJob result = null;
+            try
+            {
+                using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
+                {
+                    result = db.ParsingJobs.SingleOrDefault(j => j.Id == guid);
+                }
+            }
+            catch (Exception ex)
+            {
+                Classes.Log.Instance.Error(2, ex.Message);
+            }
+
+            return result;
+        }
     }
 }

@@ -59,11 +59,37 @@
             <param name="parsingRequest"></param>
             <returns></returns>
         </member>
+        <member name="M:parsing_api.Controllers.ParsingController.GetJobs">
+            <summary>
+            Получить все задания
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Controllers.ParsingController.GetJob(System.String)">
+            <summary>
+            Получить задачу по ее Id
+            </summary>
+            <param name="jobId"></param>
+            <returns></returns>
+        </member>
         <member name="M:parsing_api.Data.DataBase.CreateJob(parsing_api.Models.ParsingRequest)">
             <summary>
             Метод создания нового задания парсинга данных
             </summary>
             <param name="parsingRequest"></param>
+        </member>
+        <member name="M:parsing_api.Data.DataBase.GetJobs">
+            <summary>
+            Метод получения всех задач в БД
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Data.DataBase.GetJobById(System.String)">
+            <summary>
+            Метод получения задачи по ее Id
+            </summary>
+            <param name="guid"></param>
+            <returns></returns>
         </member>
         <member name="T:parsing_api.Models.FrontRequest">
             <summary>
@@ -105,6 +131,16 @@
         <member name="P:parsing_api.Models.ParsingJob.Time">
             <summary>
             Время запуска задачи
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.ParsingJob.TimeFrom">
+            <summary>
+            Время начала даты
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.ParsingJob.TimeTo">
+            <summary>
+            Время конца даты
             </summary>
         </member>
         <member name="P:parsing_api.Models.ParsingJob.Error">

@@ -102,5 +102,33 @@ namespace parsing_api.Controllers
 
             return Ok("success");
         }
+
+        /// <summary>
+        /// Получить все задания
+        /// </summary>
+        /// <returns></returns>
+        [Route("api/jobs")]
+        [AllowCrossSiteJson]
+        [HttpGet]
+        public ActionResult<string> GetJobs()
+        {
+            var jobs = DataBase.GetJobs();
+            return Ok(jobs);
+        }
+
+        /// <summary>
+        /// Получить задачу по ее Id
+        /// </summary>
+        /// <param name="jobId"></param>
+        /// <returns></returns>
+        [Route("api/job")]
+        [AllowCrossSiteJson]
+        [HttpGet]
+        public ActionResult<string> GetJob(string jobId)
+        {
+            var job = DataBase.GetJobById(jobId);
+            if (job == null) return NotFound();
+            return Ok(job);
+        }
     }
 }
