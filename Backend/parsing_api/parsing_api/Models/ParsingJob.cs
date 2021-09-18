@@ -15,7 +15,7 @@ namespace parsing_api.Models
         /// <summary>
         /// Id в форме Guid задачи
         /// </summary>
-        [Column("guid")]
+        [Column("id")]
         public string Id { get; set; }
 
         /// <summary>
@@ -37,6 +37,18 @@ namespace parsing_api.Models
         /// </summary>
         [Column("time")]
         public DateTime Time { get; set; }
+
+        /// <summary>
+        /// Время начала даты
+        /// </summary>
+        [Column("timefrom")]
+        public DateTime TimeFrom { get; set; }
+
+        /// <summary>
+        /// Время конца даты
+        /// </summary>
+        [Column("timeto")]
+        public DateTime TimeTo { get; set; }
 
         /// <summary>
         /// Текст ошибки выполнения задачи (если произошла ошибка)

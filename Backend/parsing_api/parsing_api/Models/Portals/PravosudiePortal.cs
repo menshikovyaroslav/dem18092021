@@ -13,12 +13,12 @@ namespace parsing_api.Models.Portals
     {
         public string GetHtml(ParsingRequest parsingRequest)
         {
-            throw new NotImplementedException();
+            return "";
         }
 
         public ParsingResponse ParseHtml(string html)
         {
-            throw new NotImplementedException();
+            return new ParsingResponse();
         }
     }
 }

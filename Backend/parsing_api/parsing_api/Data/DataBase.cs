@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using parsing_api.Classes;
 using parsing_api.Models;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,37 @@ namespace parsing_api.Data
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Метод создания нового задания парсинга данных
+        /// </summary>
+        /// <param name="parsingRequest"></param>
+        public static void CreateJob(ParsingRequest parsingRequest)
+        {
+            try
+            {
+                // создаем новое задание
+                var job = new ParsingJob()
+                {
+                    Id = parsingRequest.Id,
+                    PortalId = parsingRequest.PortalId,
+                    Time = DateTime.Now,
+                    TimeFrom = parsingRequest.TimeFrom,
+                    TimeTo = parsingRequest.TimeTo
+                };
+
+                // запись задания в БД
+                using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
+                {
+                    db.ParsingJobs.Add(job);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                Classes.Log.Instance.Error(4, ex.Message);
+            }
         }
     }
 }

@@ -100,7 +100,7 @@ namespace parsing_api.Controllers
             // получили запрос на парсинг, отправляем задачу на исполнение
             ParsingFactory.Parse(parsingRequest);
 
-            return Ok();
+            return Ok("success");
         }
     }
 }

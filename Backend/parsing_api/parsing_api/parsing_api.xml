@@ -59,6 +59,12 @@
             <param name="parsingRequest"></param>
             <returns></returns>
         </member>
+        <member name="M:parsing_api.Data.DataBase.CreateJob(parsing_api.Models.ParsingRequest)">
+            <summary>
+            Метод создания нового задания парсинга данных
+            </summary>
+            <param name="parsingRequest"></param>
+        </member>
         <member name="T:parsing_api.Models.FrontRequest">
             <summary>
             Объект данных от frontend-части в API
@@ -104,6 +110,31 @@
         <member name="P:parsing_api.Models.ParsingJob.Error">
             <summary>
             Текст ошибки выполнения задачи (если произошла ошибка)
+            </summary>
+        </member>
+        <member name="T:parsing_api.Models.ParsingRequest">
+            <summary>
+            Модель запроса парсинга данных
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.ParsingRequest.Id">
+            <summary>
+            Id запроса
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.ParsingRequest.PortalId">
+            <summary>
+            Id веб-портала
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.ParsingRequest.TimeFrom">
+            <summary>
+            Дата начала парсинга
+            </summary>
+        </member>
+        <member name="P:parsing_api.Models.ParsingRequest.TimeTo">
+            <summary>
+            Дата конца парсинга
             </summary>
         </member>
         <member name="T:parsing_api.Models.ParsingResponse">
