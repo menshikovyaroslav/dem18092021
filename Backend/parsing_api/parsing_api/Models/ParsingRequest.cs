@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace parsing_api.Models
 {
-    [Table("regions")]
-    public class Region
+    public class ParsingRequest
     {
         [Column("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
         [Column("name")]
         public string Name { get; set; }
     }

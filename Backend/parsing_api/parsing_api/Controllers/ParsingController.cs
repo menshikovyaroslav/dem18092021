@@ -43,6 +43,19 @@ namespace parsing_api.Controllers
             return Ok(regions);
         }
 
+        /// <summary>
+        /// Загрузка списка порталов
+        /// </summary>
+        /// <returns></returns>
+        [Route("api/portals")]
+        [AllowCrossSiteJson]
+        [HttpGet]
+        public ActionResult<string> GetPortals()
+        {
+            var portals = DataBase.GetPortals();
+            return Ok(portals);
+        }
+
         [Route("api/log/count")]
         [AllowCrossSiteJson]
         [HttpGet]
@@ -70,6 +83,19 @@ namespace parsing_api.Controllers
         [AllowCrossSiteJson]
         [HttpPost]
         public ActionResult<string> GetByParameters(FrontRequest frontRequest)
+        {
+            return Ok($"frontRequest: {frontRequest.Number}");
+        }
+
+        /// <summary>
+        /// Запрос на создание задания парсинга определенного веб-портала на указанную дату
+        /// </summary>
+        /// <param name="frontRequest"></param>
+        /// <returns></returns>
+        [Route("api/setparsing")]
+        [AllowCrossSiteJson]
+        [HttpPost]
+        public ActionResult<string> SetParsing(FrontRequest frontRequest)
         {
             return Ok($"frontRequest: {frontRequest.Number}");
         }

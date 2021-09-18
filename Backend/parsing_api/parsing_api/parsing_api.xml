@@ -21,11 +21,24 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:parsing_api.Controllers.ParsingController.GetPortals">
+            <summary>
+            Загрузка списка порталов
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:parsing_api.Controllers.ParsingController.GetByParameters(parsing_api.Models.FrontRequest)">
             <summary>
             Поиск информации по заданным параметрам
             </summary>
             <param name="frontRequest">Объект с заданными параметрами</param>
+            <returns></returns>
+        </member>
+        <member name="M:parsing_api.Controllers.ParsingController.CreateParsing(parsing_api.Models.FrontRequest)">
+            <summary>
+            Запрос на создание задания парсинга определенного веб-портала на указанную дату
+            </summary>
+            <param name="frontRequest"></param>
             <returns></returns>
         </member>
         <member name="T:parsing_api.Models.FrontRequest">

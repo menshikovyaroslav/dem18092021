@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace parsing_api.Models
 {
-    [Table("regions")]
-    public class Region
+    [Table("portals")]
+    public class Portal
     {
         [Column("id")]
         public int Id { get; set; }
         [Column("name")]
         public string Name { get; set; }
+        [Column("link")]
+        public string Link { get; set; }
     }
 }
