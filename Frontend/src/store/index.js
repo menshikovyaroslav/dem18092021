@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+// import bus from '@/utils/bus.plugin'
 
 Vue.use(Vuex)
 
