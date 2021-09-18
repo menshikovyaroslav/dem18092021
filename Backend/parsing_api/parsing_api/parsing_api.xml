@@ -17,7 +17,7 @@
         </member>
         <member name="M:parsing_api.Controllers.ParsingController.GetRegions">
             <summary>
-            Тест метод для проверки дступности API
+            Загрузка регионов из БД
             </summary>
             <returns></returns>
         </member>

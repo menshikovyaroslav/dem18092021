@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using parsing_api.Classes;
 using parsing_api.Data;
 using parsing_api.Models;
 using System;
@@ -22,6 +23,7 @@ namespace parsing_api.Controllers
         /// </summary>
         /// <returns></returns>
         [Route("api/test")]
+        [AllowCrossSiteJson]
         [HttpGet]
         public ActionResult<string> Test()
         {
@@ -29,10 +31,11 @@ namespace parsing_api.Controllers
         }
 
         /// <summary>
-        /// Тест метод для проверки дступности API
+        /// Загрузка регионов из БД
         /// </summary>
         /// <returns></returns>
         [Route("api/regions")]
+        [AllowCrossSiteJson]
         [HttpGet]
         public ActionResult<string> GetRegions()
         {
@@ -41,6 +44,7 @@ namespace parsing_api.Controllers
         }
 
         [Route("api/log/count")]
+        [AllowCrossSiteJson]
         [HttpGet]
         public ActionResult<string> LogCount()
         {
@@ -63,6 +67,7 @@ namespace parsing_api.Controllers
         /// <param name="frontRequest">Объект с заданными параметрами</param>
         /// <returns></returns>
         [Route("api/getbyparameters")]
+        [AllowCrossSiteJson]
         [HttpPost]
         public ActionResult<string> GetByParameters(FrontRequest frontRequest)
         {
