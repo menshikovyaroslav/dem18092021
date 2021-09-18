@@ -92,7 +92,7 @@ namespace parsing_api.Controllers
         /// </summary>
         /// <param name="parsingRequest"></param>
         /// <returns></returns>
-        [Route("api/setparsing")]
+        [Route("api/newjob")]
         [AllowCrossSiteJson]
         [HttpPost]
         public ActionResult<string> SetParsing(ParsingRequest parsingRequest)
