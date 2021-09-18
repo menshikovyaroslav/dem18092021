@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace parsing_api.Models
 {
+    /// <summary>
+    /// Данные парсинга по делу - объект возвращаемого результата пользователю
+    /// </summary>
     public class ParsingResponse
     {
         /// <summary>
