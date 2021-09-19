@@ -15,7 +15,7 @@
 				<v-select
 					v-model="filter.caseNumber"
 					:items="caseNumbersList"
-					label="Номер дела"
+					label="Номер статьи"
 					dense
 					outlined
 					return-object
