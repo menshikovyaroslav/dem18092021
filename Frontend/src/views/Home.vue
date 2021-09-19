@@ -9,7 +9,16 @@
 				</v-col>
 
 				<v-col class="mt-4 col-12 col-md-9">
-					<jobs-table />
+					<v-row>
+						<top-list />
+					</v-row>
+					<v-row class="d-flex justify-center mt-6">
+						<jobs-table />
+					</v-row>
+				</v-col>
+
+				<v-col class="col-12">
+					
 				</v-col>
 			</v-row>
 		</v-fade-transition>
@@ -21,6 +30,7 @@
 	import SpinnerLoader from "@components/SpinnerLoader.vue";
 	import JobForm from "@components/JobForm.vue";
 	import JobsTable from "@components/JobsTable.vue";
+	import TopList from "@components/TopList.vue";
 
 	export default {
 		name: "MainPage",
@@ -28,6 +38,7 @@
 			SpinnerLoader,
 			JobForm,
 			JobsTable,
+			TopList,
 		},
 		computed: {
 			...mapState(["isAppReady"]),

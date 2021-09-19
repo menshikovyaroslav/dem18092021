@@ -54,7 +54,7 @@ export default new Vuex.Store({
 					dateCreated: parseDate(item.time),
 					dateStart: parseDate(item.timeFrom),
 					dateEnd: parseDate(item.timeTo),
-					statusLabel: item.resultCode ? 'В процессе' : 'Завершено',
+					statusLabel: item.resultCode ? 'Завершено' : 'В очереди',
 					portalName: state.portalsList.find(
 						portalItem => portalItem.id === item.portalId
 					).name
