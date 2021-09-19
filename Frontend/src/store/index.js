@@ -35,6 +35,11 @@ export default new Vuex.Store({
 				)
 			} catch (e) {
 				console.error(e)
+				this._vm.$snackbar({
+					type: 'error',
+					message:
+						'Не удалось инициализировать приложение. Обратитесь в тех. поддержку.'
+				})
 			} finally {
 				commit('SET_STATE', { key: 'isAppReady', value: true })
 			}
@@ -64,6 +69,10 @@ export default new Vuex.Store({
 				commit('SET_STATE', { key: 'jobsList', value: parsedJobsList })
 			} catch (e) {
 				console.error(e)
+				this._vm.$snackbar({
+					type: 'error',
+					message: 'Не удалось получить данные о задачах.'
+				})
 			}
 		},
 
@@ -82,9 +91,18 @@ export default new Vuex.Store({
 				})
 				if (res.success) {
 					dispatch('getJobsList')
+					this._vm.$snackbar({
+						type: 'success',
+						message: 'Задача успешно создана.'
+					})
 				}
 				return res
 			} catch (e) {
+				this._vm.$snackbar({
+					type: 'error',
+					message:
+						'Не удалось создать новую задачу. Повторите попытку или обратитесь в тех. поддержку.'
+				})
 				console.error(e)
 			}
 		},
@@ -115,6 +133,10 @@ export default new Vuex.Store({
 				const casesList = await Api.getCasesList(fullFilterData)
 				commit('SET_STATE', { key: 'casesList', value: casesList })
 			} catch (e) {
+				this._vm.$snackbar({
+					type: 'error',
+					message: 'Не удалось получить данные о делах.'
+				})
 				console.error(e)
 			}
 		}

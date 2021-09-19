@@ -1,94 +1,96 @@
 <template>
 	<v-row class="cases-table">
 		<v-col class="cases-table__filter col-12 col-md-3">
-			<h2 class="mb-3">Фильтр дел</h2>
-			<v-select
-				v-model="filter.region"
-				:items="regionsList"
-				label="Регион"
-				item-text="name"
-				dense
-				outlined
-				return-object
-			/>
-			<v-select
-				v-model="filter.caseNumber"
-				:items="caseNumbersList"
-				label="Номер дела"
-				dense
-				outlined
-				return-object
-			/>
+			<v-card class="pl-4 pr-4 pt-4">
+				<h2 class="mb-3">Фильтр дел</h2>
+				<v-select
+					v-model="filter.region"
+					:items="regionsList"
+					label="Регион"
+					item-text="name"
+					dense
+					outlined
+					return-object
+				/>
+				<v-select
+					v-model="filter.caseNumber"
+					:items="caseNumbersList"
+					label="Номер дела"
+					dense
+					outlined
+					return-object
+				/>
 
-			<v-menu
-				v-model="showDateMenu"
-				:close-on-content-click="false"
-				:nudge-right="40"
-				transition="scale-transition"
-				offset-y
-				min-width="auto"
-			>
-				<template v-slot:activator="{ on, attrs }">
-					<v-text-field
-						v-model="formattedDate"
-						label="Диапазон дат"
-						prepend-icon="mdi-calendar"
-						readonly
-						dense
-						outlined
-						v-bind="attrs"
-						v-on="on"
-					></v-text-field>
-				</template>
-				<v-date-picker v-model="filter.date" range></v-date-picker>
-			</v-menu>
+				<v-menu
+					v-model="showDateMenu"
+					:close-on-content-click="false"
+					:nudge-right="40"
+					transition="scale-transition"
+					offset-y
+					min-width="auto"
+				>
+					<template v-slot:activator="{ on, attrs }">
+						<v-text-field
+							v-model="formattedDate"
+							label="Диапазон дат"
+							prepend-icon="mdi-calendar"
+							readonly
+							dense
+							outlined
+							v-bind="attrs"
+							v-on="on"
+						></v-text-field>
+					</template>
+					<v-date-picker v-model="filter.date" range></v-date-picker>
+				</v-menu>
 
-			<v-text-field
-				label="Суд"
-				v-model="filter.court"
-				dense
-				outlined
-			></v-text-field>
+				<v-text-field
+					label="Суд"
+					v-model="filter.court"
+					dense
+					outlined
+				></v-text-field>
 
-			<v-text-field
-				label="Подразделение"
-				v-model="filter.clause"
-				dense
-				outlined
-			></v-text-field>
+				<v-text-field
+					label="Подразделение"
+					v-model="filter.clause"
+					dense
+					outlined
+				></v-text-field>
 
-			<v-text-field
-				label="Инстанция"
-				v-model="filter.instance"
-				dense
-				outlined
-			></v-text-field>
+				<v-text-field
+					label="Инстанция"
+					v-model="filter.instance"
+					dense
+					outlined
+				></v-text-field>
 
-			<v-text-field
-				label="ФИО подсудимого"
-				v-model="filter.fio"
-				dense
-				outlined
-			></v-text-field>
+				<v-text-field
+					label="ФИО подсудимого"
+					v-model="filter.fio"
+					dense
+					outlined
+				></v-text-field>
 
-			<v-text-field
-				label="ФИО судьи"
-				v-model="filter.judge"
-				dense
-				outlined
-			></v-text-field>
+				<v-text-field
+					label="ФИО судьи"
+					v-model="filter.judge"
+					dense
+					outlined
+				></v-text-field>
 
-			<v-btn
-				tile
-				text
-				color="primary"
-				@click="clearFilter"
-				:disabled="!isFilterClearable"
-				>Очистить фильтр</v-btn
-			>
+				<v-btn
+					tile
+					text
+					color="primary"
+					@click="clearFilter"
+					:disabled="!isFilterClearable"
+					>Очистить фильтр</v-btn
+				>
+			</v-card>
 		</v-col>
 		<v-col class="col-12 col-md-9">
-			<div class="cases-table__table">
+			<v-card class="cases-table__table pt-4">
 				<h2>Список дел</h2>
 				<v-data-table
 					@click:row="handleRowClick"
@@ -102,7 +104,7 @@
 					locale="ru-RU"
 				>
 				</v-data-table>
-			</div>
+			</v-card>
 		</v-col>
 	</v-row>
 </template>

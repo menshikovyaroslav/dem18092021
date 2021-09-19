@@ -1,18 +1,20 @@
 <template>
 	<div class="jobs-table">
-		<h2>Список задач на парсинг</h2>
-		<v-data-table
-			@click:row="handleRowClick"
-			hide-default-footer
-			:loading="loadingList"
-			loading-text="Загружаются данные о запросах..."
-			:headers="headers"
-			:items="jobsList"
-			:items-per-page="Infinity"
-			:item-class="() => 'jobs-table__row'"
-			locale="ru-RU"
-		>
-		</v-data-table>
+		<v-card class="pt-4">
+			<h2>Список задач на парсинг</h2>
+			<v-data-table
+				@click:row="handleRowClick"
+				hide-default-footer
+				:loading="loadingList"
+				loading-text="Загружаются данные о запросах..."
+				:headers="headers"
+				:items="jobsList"
+				:items-per-page="Infinity"
+				:item-class="() => 'jobs-table__row'"
+				locale="ru-RU"
+			>
+			</v-data-table>
+		</v-card>
 	</div>
 </template>
 
@@ -60,6 +62,6 @@
 
 <style scoped lang="scss">
 	.jobs-table {
-		width: 100%;
+		width: calc(100% - 24px);
 	}
 </style>
