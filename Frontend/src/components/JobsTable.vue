@@ -1,6 +1,6 @@
 <template>
 	<div class="jobs-table">
-		<v-table
+		<v-data-table
 			@click:row="handleRowClick"
 			hide-default-footer
 			:loading="loadingList"
@@ -11,7 +11,7 @@
 			:item-class="() => 'jobs-table__row'"
 			locale="ru-RU"
 		>
-		</v-table>
+		</v-data-table>
 	</div>
 </template>
 
@@ -34,7 +34,7 @@
 				},
 				{ text: "От", value: "dateStart", sortable: true },
 				{ text: "До", value: "dateEnd", sortable: true },
-				{ text: "Статус", value: "status", sortable: true },
+				{ text: "Статус", value: "statusLabel", sortable: true },
 			],
 		}),
 		computed: {

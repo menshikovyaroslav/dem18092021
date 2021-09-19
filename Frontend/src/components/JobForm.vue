@@ -5,10 +5,10 @@
 			:items="regionsList"
 			label="Регион"
 			item-text="name"
-			return-object
 			dense
 			outlined
 			:rules="rules.selectedRegion"
+			return-object
 		/>
 
 		<v-select
@@ -16,10 +16,10 @@
 			:items="portalsList"
 			label="Портал"
 			item-text="name"
-			return-object
 			dense
 			outlined
 			:rules="rules.selectedPortal"
+			return-object
 		/>
 
 		<v-menu
@@ -45,12 +45,18 @@
 			<v-date-picker v-model="selectedDate" range></v-date-picker>
 		</v-menu>
 
-		<v-btn primary @click="applyForm">Создать заявку</v-btn>
+		<v-btn
+			color="primary"
+			:disabled="formLoading"
+			:loading="formLoading"
+			@click="applyForm"
+			>Создать заявку</v-btn
+		>
 	</v-form>
 </template>
 
 <script>
-	import { mapState } from "vuex";
+	import { mapState, mapActions } from "vuex";
 	export default {
 		name: "JobForm",
 		data: () => ({
@@ -58,10 +64,11 @@
 			selectedPortal: null,
 			selectedDate: null,
 			showDateMenu: false,
+			formLoading: false,
 
 			rules: {
-				selectedRegion: [(v) => v || "Необходимо выбрать регион."],
-				selectedPortal: [(v) => v || "Необходимо выбрать портал."],
+				selectedRegion: [(v) => !!v ?? "Необходимо выбрать регион."],
+				selectedPortal: [(v) => !!v ?? "Необходимо выбрать портал."],
 			},
 		}),
 		computed: {
@@ -74,17 +81,28 @@
 			},
 		},
 		methods: {
+			...mapActions(["createNewJob"]),
 			formatDate(date) {
 				const [year, month, day] = date.split("-");
 				return `${day}.${month}.${year}`;
 			},
 
-			applyForm() {
-				const isFormValid = this.$refs.form.validate();
-				if (!isFormValid) {
-					return;
+			async applyForm() {
+				try {
+					this.formLoading = true;
+					const isFormValid = this.$refs.form.validate();
+					console.log(isFormValid);
+					if (!isFormValid) {
+						return;
+					}
+
+					this.createNewJob({
+						selectedPortal: this.selectedPortal,
+						selectedDate: this.selectedDate,
+					});
+				} finally {
+					this.formLoading = false;
 				}
-				console.log("applied");
 			},
 		},
 	};

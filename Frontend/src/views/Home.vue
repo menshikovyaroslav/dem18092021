@@ -7,7 +7,10 @@
 				<v-col cols="3" class="mt-4">
 					<job-form />
 				</v-col>
-				<v-col cols="9" class="mt-4"> </v-col>
+
+				<v-col cols="9" class="mt-4">
+					<jobs-table />
+				</v-col>
 			</v-row>
 		</v-fade-transition>
 	</v-container>
@@ -17,12 +20,14 @@
 	import { mapState, mapActions } from "vuex";
 	import SpinnerLoader from "@components/SpinnerLoader.vue";
 	import JobForm from "@components/JobForm.vue";
+	import JobsTable from "@components/JobsTable.vue";
 
 	export default {
 		name: "MainPage",
 		components: {
 			SpinnerLoader,
 			JobForm,
+			JobsTable,
 		},
 		computed: {
 			...mapState(["isAppReady"]),

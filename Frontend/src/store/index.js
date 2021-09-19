@@ -52,14 +52,37 @@ export default new Vuex.Store({
 				const parsedJobsList = jobsList.map(item => ({
 					...item,
 					dateCreated: parseDate(item.time),
-					dateStart: parseDate(item.timeForm),
+					dateStart: parseDate(item.timeFrom),
 					dateEnd: parseDate(item.timeTo),
+					statusLabel: item.resultCode ? 'В процессе' : 'Завершено',
 					portalName: state.portalsList.find(
 						portalItem => portalItem.id === item.portalId
 					).name
 				}))
 
 				commit('SET_STATE', { key: 'jobsList', value: parsedJobsList })
+			} catch (e) {
+				console.warn(e)
+			}
+		},
+
+		async createNewJob({ dispatch }, { selectedPortal, selectedDate }) {
+			try {
+				const id = Date.now().toString()
+				const portalId = selectedPortal.id
+				const [timeFrom, timeTo] = selectedDate.map(date =>
+					new Date(date).toISOString()
+				)
+				const res = await Api.createJob({
+					id,
+					portalId,
+					timeFrom,
+					timeTo
+				})
+				if (res.success) {
+					dispatch('getJobsList')
+				}
+				return res
 			} catch (e) {
 				console.warn(e)
 			}
