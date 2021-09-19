@@ -18,7 +18,8 @@
 				</v-col>
 
 				<v-col class="col-12">
-					
+					<v-divider class="home__divider"></v-divider>
+					<cases-table />
 				</v-col>
 			</v-row>
 		</v-fade-transition>
@@ -31,6 +32,7 @@
 	import JobForm from "@components/JobForm.vue";
 	import JobsTable from "@components/JobsTable.vue";
 	import TopList from "@components/TopList.vue";
+	import CasesTable from "@components/CasesTable.vue";
 
 	export default {
 		name: "MainPage",
@@ -39,6 +41,7 @@
 			JobForm,
 			JobsTable,
 			TopList,
+			CasesTable,
 		},
 		computed: {
 			...mapState(["isAppReady"]),
@@ -53,4 +56,9 @@
 </script>
 
 <style scoped lang="scss">
+	.home {
+		&__divider {
+			margin-top: 30px;
+		}
+	}
 </style>
