@@ -91,7 +91,6 @@
 				try {
 					this.formLoading = true;
 					const isFormValid = this.$refs.form.validate();
-					console.log(isFormValid);
 					if (!isFormValid) {
 						return;
 					}

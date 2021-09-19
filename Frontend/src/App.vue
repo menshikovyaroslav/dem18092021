@@ -2,7 +2,7 @@
 	<v-app>
 		<v-app-bar app color="primary" dark>
 			<v-spacer></v-spacer>
-			<div class="d-flex">
+			<div class="d-flex text-center">
 				<h2>Инфографика судебной информации</h2>
 			</div>
 			<v-spacer></v-spacer>

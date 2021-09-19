@@ -4,11 +4,11 @@
 			<spinner-loader v-if="!isAppReady" />
 
 			<v-row v-else class="text-center">
-				<v-col cols="3" class="mt-4">
+				<v-col class="mt-4 col-12 col-md-3">
 					<job-form />
 				</v-col>
 
-				<v-col cols="9" class="mt-4">
+				<v-col class="mt-4 col-12 col-md-9">
 					<jobs-table />
 				</v-col>
 			</v-row>
