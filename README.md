@@ -22,8 +22,6 @@ npm i
 
 npm run serve
 
-### Посмотреть тут: https://menshikovyaroslav.github.io/dem18092021/
-
 ### Backend
 
 Парсинг данных порталов используя Get и Post запросы
