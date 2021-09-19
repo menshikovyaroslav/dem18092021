@@ -1,5 +1,5 @@
 <template>
-	<v-container fluid>
+	<v-container fluid class="home__container">
 		<v-fade-transition>
 			<spinner-loader v-if="!isAppReady" />
 
@@ -57,6 +57,9 @@
 
 <style scoped lang="scss">
 	.home {
+		&__container {
+			background-color: #bbdefb;
+		}
 		&__divider {
 			margin-top: 30px;
 		}
