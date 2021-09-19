@@ -18,28 +18,6 @@ namespace parsing_api.Data
         const string connString = "Server=127.0.0.1;Port=5432;User Id=backenduser;Password=Qwerty123;Database=demhack3;CommandTimeOut=5000";
 
         /// <summary>
-        /// Тестовый метод, который планируется убрать или поменять
-        /// </summary>
-        /// <returns></returns>
-        public static int LogCount()
-        {
-            var count = 0;
-            try
-            {
-                using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
-                {
-                    count = db.ParsingRequests.Count();
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Error(5, ex.Message);
-            }
-
-            return count;
-        }
-
-        /// <summary>
         /// Получить список регионов
         /// </summary>
         /// <returns></returns>
@@ -154,6 +132,51 @@ namespace parsing_api.Data
             catch (Exception ex)
             {
                 Log.Instance.Error(6, ex.Message);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Получить список кейсов по номеру кейса
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static List<ParsingResponse> GetCasesByNumber(string number)
+        {
+            var result = new List<ParsingResponse>();
+            try
+            {
+                using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
+                {
+                    result = db.Cases.Where(c => c.Number == number).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Error(8, ex.Message);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Получить все кейсы
+        /// </summary>
+        /// <returns></returns>
+        public static List<ParsingResponse> GetAllCases()
+        {
+            var result = new List<ParsingResponse>();
+            try
+            {
+                using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
+                {
+                    result = db.Cases.ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Error(9, ex.Message);
             }
 
             return result;
