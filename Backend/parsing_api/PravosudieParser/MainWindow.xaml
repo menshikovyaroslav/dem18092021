@@ -36,7 +36,7 @@
                     <ComboBoxItem Content="274"/>
                 </ComboBox>
 
-                <Button Grid.Row="3" Grid.Column="0" Width="180" Height="40" Content="Запустить парсер" />
+                <Button Name="StartParser" Grid.Row="3" Grid.Column="0" Width="180" Height="40" Content="Запустить парсер" Click="StartParser_Click" />
             </Grid>
         </Border>
     </Grid>
