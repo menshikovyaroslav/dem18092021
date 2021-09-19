@@ -13,38 +13,16 @@ namespace parsing_api.Controllers
     public class DataController : Controller
     {
         /// <summary>
-        /// Ненужный запрос - скоро удалим
+        /// Поиск кейсов по параметрам
         /// </summary>
+        /// <param name="frontRequest"></param>
         /// <returns></returns>
-        [Route("api/log/count")]
-        [AllowCrossSiteJson]
-        [HttpGet]
-        public ActionResult<string> LogCount()
-        {
-            var count = 0;
-            try
-            {
-                count = DataBase.LogCount();
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Info(ex.Message);
-            }
-
-            return Ok($"count: {count}");
-        }
-
-        /// <summary>
-        /// Поиск информации по заданным параметрам
-        /// </summary>
-        /// <param name="frontRequest">Объект с заданными параметрами</param>
-        /// <returns></returns>
-        [Route("api/getbyparameters")]
+        [Route("api/getcases")]
         [AllowCrossSiteJson]
         [HttpPost]
-        public ActionResult<string> GetByParameters(FrontRequest frontRequest)
+        public ActionResult<string> GetCases(FrontRequest frontRequest)
         {
-            return Ok($"frontRequest: {frontRequest.Number}");
+            return Ok($"");
         }
     }
 }
