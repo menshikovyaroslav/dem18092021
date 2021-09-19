@@ -10,7 +10,8 @@ export default new Vuex.Store({
 		isAppReady: false,
 		regionsList: [],
 		portalsList: [],
-		jobsList: []
+		jobsList: [],
+		casesList: []
 	},
 
 	mutations: {
@@ -33,7 +34,7 @@ export default new Vuex.Store({
 					})
 				)
 			} catch (e) {
-				console.warn(e)
+				console.error(e)
 			} finally {
 				commit('SET_STATE', { key: 'isAppReady', value: true })
 			}
@@ -62,7 +63,7 @@ export default new Vuex.Store({
 
 				commit('SET_STATE', { key: 'jobsList', value: parsedJobsList })
 			} catch (e) {
-				console.warn(e)
+				console.error(e)
 			}
 		},
 
@@ -84,7 +85,16 @@ export default new Vuex.Store({
 				}
 				return res
 			} catch (e) {
-				console.warn(e)
+				console.error(e)
+			}
+		},
+
+		async searchCases({ commit }, data) {
+			try {
+				const casesList = await Api.getCasesList(data)
+				commit('SET_STATE', { key: 'casesList', value: casesList })
+			} catch (e) {
+				console.error(e)
 			}
 		}
 	}

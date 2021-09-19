@@ -1,17 +1,6 @@
 <template>
 	<v-form ref="form">
 		<v-select
-			v-model="selectedRegion"
-			:items="regionsList"
-			label="Регион"
-			item-text="name"
-			dense
-			outlined
-			:rules="rules.selectedRegion"
-			return-object
-		/>
-
-		<v-select
 			v-model="selectedPortal"
 			:items="portalsList"
 			label="Портал"
@@ -57,6 +46,7 @@
 
 <script>
 	import { mapState, mapActions } from "vuex";
+	import { formatDate } from "@utils/";
 	export default {
 		name: "JobForm",
 		data: () => ({
@@ -67,7 +57,6 @@
 			formLoading: false,
 
 			rules: {
-				selectedRegion: [(v) => !!v || "Необходимо выбрать регион."],
 				selectedPortal: [(v) => !!v || "Необходимо выбрать портал."],
 			},
 		}),
@@ -76,16 +65,12 @@
 			formattedDate() {
 				if (!this.selectedDate) return "";
 				return this.selectedDate
-					.map((date) => this.formatDate(date))
+					.map((date) => formatDate(date))
 					.join(" - ");
 			},
 		},
 		methods: {
 			...mapActions(["createNewJob"]),
-			formatDate(date) {
-				const [year, month, day] = date.split("-");
-				return `${day}.${month}.${year}`;
-			},
 
 			async applyForm() {
 				try {
