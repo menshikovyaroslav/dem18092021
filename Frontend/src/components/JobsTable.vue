@@ -1,6 +1,6 @@
 <template>
 	<div class="jobs-table">
-		<v-card class="pt-4">
+		<v-card class="pt-4 pb-4">
 			<h2>Список задач на парсинг</h2>
 			<v-data-table
 				@click:row="handleRowClick"

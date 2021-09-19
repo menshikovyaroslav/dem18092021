@@ -12,7 +12,10 @@ export default {
 	},
 
 	createJob(jobData) {
-		return axios.post(`${baseURL}/api/newjob`, jobData).then(r => r.data)
+		// return axios.post(`${baseURL}/api/newjob`, jobData).then(r => r.data)
+		return axios
+			.get(`${baseURL}/api/newjob`, { params: jobData })
+			.then(r => r.data)
 	},
 
 	getJobsList() {
@@ -24,12 +27,18 @@ export default {
 	},
 
 	getInfoByParams(data) {
+		// return axios
+		// 	.post(`${baseURL}/api/getbyparameters`, data)
+		// 	.then(r => r.data)
 		return axios
-			.post(`${baseURL}/api/getbyparameters`, data)
+			.get(`${baseURL}/api/getbyparameters`, { params: data })
 			.then(r => r.data)
 	},
 
 	getCasesList(filter) {
-		return axios.post(`${baseURL}/api/getcases`, filter).then(r => r.data)
+		// return axios.post(`${baseURL}/api/getcases`, filter).then(r => r.data)
+		return axios
+			.get(`${baseURL}/api/getcases`, { params: filter })
+			.then(r => r.data)
 	}
 }

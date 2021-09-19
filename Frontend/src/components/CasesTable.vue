@@ -15,7 +15,7 @@
 				<v-select
 					v-model="filter.caseNumber"
 					:items="caseNumbersList"
-					label="Номер дела"
+					label="Номер статьи"
 					dense
 					outlined
 					return-object
@@ -90,7 +90,7 @@
 			</v-card>
 		</v-col>
 		<v-col class="col-12 col-md-9">
-			<v-card class="cases-table__table pt-4">
+			<v-card class="cases-table__table pt-4 pb-4">
 				<h2>Список дел</h2>
 				<v-data-table
 					@click:row="handleRowClick"
