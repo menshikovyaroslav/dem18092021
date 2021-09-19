@@ -29,6 +29,11 @@ namespace parsing_api.Data
         public DbSet<ParsingJob> ParsingJobs { get; set; }
 
         /// <summary>
+        /// Кейсы осужденных
+        /// </summary>
+        public DbSet<ParsingResponse> Cases { get; set; }
+
+        /// <summary>
         /// Инициализация контекста работы с БД
         /// </summary>
         /// <param name="options"></param>

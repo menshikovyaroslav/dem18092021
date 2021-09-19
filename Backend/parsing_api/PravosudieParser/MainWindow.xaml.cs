@@ -95,6 +95,9 @@ namespace PravosudieParser
                     var isCaptcha = driver.FindElement(By.Id("modalWindow_capchaDialog"));
 
                     MessageBox.Show("Требуется ввести данные captcha");
+
+                    driver.FindElement(By.XPath("//label[contains(.,'Дело')]")).Click();
+                    await Task.Delay(1500);
                 }
                 catch (Exception)
                 {
@@ -160,6 +163,7 @@ namespace PravosudieParser
                 catch (Exception ex)
                 {
                     Log.Instance.Error(7, ex.Message);
+                    driver.FindElement(By.XPath("(//span[@title='Вперед'])[3]")).Click();
                 }
             }
 

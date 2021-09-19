@@ -4,6 +4,9 @@ using parsing_api.Data;
 using Support;
 using Support.Models;
 using System;
+using System.Collections.Generic;
+using Support.Extensions;
+using System.Linq;
 
 namespace parsing_api.Controllers
 {
@@ -13,38 +16,34 @@ namespace parsing_api.Controllers
     public class DataController : Controller
     {
         /// <summary>
-        /// Ненужный запрос - скоро удалим
+        /// Поиск кейсов по параметрам
         /// </summary>
+        /// <param name="frontRequest"></param>
         /// <returns></returns>
-        [Route("api/log/count")]
-        [AllowCrossSiteJson]
-        [HttpGet]
-        public ActionResult<string> LogCount()
-        {
-            var count = 0;
-            try
-            {
-                count = DataBase.LogCount();
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Info(ex.Message);
-            }
-
-            return Ok($"count: {count}");
-        }
-
-        /// <summary>
-        /// Поиск информации по заданным параметрам
-        /// </summary>
-        /// <param name="frontRequest">Объект с заданными параметрами</param>
-        /// <returns></returns>
-        [Route("api/getbyparameters")]
+        [Route("api/getcases")]
         [AllowCrossSiteJson]
         [HttpPost]
-        public ActionResult<string> GetByParameters(FrontRequest frontRequest)
+        public ActionResult<string> GetCases(FrontRequest frontRequest)
         {
-            return Ok($"frontRequest: {frontRequest.Number}");
+            Log.Instance.Info($"x1: {frontRequest.DateFrom}");
+            Log.Instance.Info($"x1-1: {frontRequest.DateTo}");
+
+            // получаем все кейсы
+            var result = DataBase.GetAllCases();
+
+            Log.Instance.Info($"x2: {result.Count}");
+
+            // фильтр по номеру кейса
+            if (!frontRequest.Number.IsEmpty()) result = result.Where(c => c.Number == frontRequest.Number).ToList();
+
+            Log.Instance.Info($"x3: {result.Count}");
+
+            // фильтр по дате поступления дела
+            result = result.Where(c => c.DateIn >= frontRequest.DateFrom && c.DateIn <= frontRequest.DateTo).ToList();
+
+            Log.Instance.Info($"x4: {result.Count}");
+
+            return Ok(result);
         }
     }
 }
