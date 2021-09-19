@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Support.Models
 {
@@ -12,12 +13,18 @@ namespace Support.Models
         /// Id региона
         /// </summary>
         [Column("id")]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Название региона
         /// </summary>
         [Column("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Алиасы региона
+        /// </summary>
+        [Column("aliases")]
+        public List<string> Aliases { get; set; }
     }
 }

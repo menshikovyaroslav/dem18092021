@@ -107,6 +107,8 @@ namespace PravosudieParser
                     var clause = IsContains(driver, "(//span[contains(@data-pos,'0')])[5]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[5]")).GetAttribute("textContent") : string.Empty;
 
                     var regionString = IsContains(driver, "(//span[contains(@data-pos,'0')])[6]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[6]")).GetAttribute("textContent") : string.Empty;
+                    var region = DataBase.GetRegionIdByName(regionString);
+                    
                     var result = IsContains(driver, "(//span[contains(@data-pos,'0')])[7]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[7]")).GetAttribute("textContent") : string.Empty;
 
                     var judge = IsContains(driver, "(//span[contains(@data-pos,'0')])[2]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[2]")).GetAttribute("textContent") : string.Empty;
@@ -142,7 +144,7 @@ namespace PravosudieParser
                         Number = number,
                         Instance = instance,
                         Clause = clause,
-                        Region = regionString,
+                        Region = region,
                         DecisionText = result,
                         Fio = person,
                         Judge = judge,

@@ -9,6 +9,11 @@ namespace PravosudieParser.Data
     public class BackendDb : DbContext
     {
         /// <summary>
+        /// Таблица регионов страны
+        /// </summary>
+        public DbSet<Region> Regions { get; set; }
+
+        /// <summary>
         /// Данные запросов парсинга
         /// </summary>
         public DbSet<ParsingResponse> ParsingResponses { get; set; }
