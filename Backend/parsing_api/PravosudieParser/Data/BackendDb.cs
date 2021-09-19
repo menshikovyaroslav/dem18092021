@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Support.Models;
 
-namespace parsing_api.Data
+namespace PravosudieParser.Data
 {
     /// <summary>
     /// Контест для работы с БД

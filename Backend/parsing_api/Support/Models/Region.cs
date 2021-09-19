@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace parsing_api.Models
+namespace Support.Models
 {
     /// <summary>
     /// Модель объекта региона страны

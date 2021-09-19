@@ -3,7 +3,7 @@ using Support.Request;
 using System;
 using System.Net;
 
-namespace parsing_api.Models.Portals.Pravosudie
+namespace Support.Models.Portals.Pravosudie
 {
     /// <summary>
     /// Веб-портал ГАС Правосудие

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using parsing_api.Classes;
 using parsing_api.Data;
-using parsing_api.Models;
 using Support;
+using Support.Models;
 using System;
 
 namespace parsing_api.Controllers

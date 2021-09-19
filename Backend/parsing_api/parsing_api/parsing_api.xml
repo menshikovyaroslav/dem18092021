@@ -20,7 +20,7 @@
             Класс для обработки задач парсинга данных
             </summary>
         </member>
-        <member name="M:parsing_api.Classes.ParsingFactory.Parse(parsing_api.Models.ParsingRequest)">
+        <member name="M:parsing_api.Classes.ParsingFactory.Parse(Support.Models.ParsingRequest)">
             <summary>
             Метод инициализации парсинга данных
             </summary>
@@ -44,7 +44,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:parsing_api.Controllers.DataController.GetByParameters(parsing_api.Models.FrontRequest)">
+        <member name="M:parsing_api.Controllers.DataController.GetByParameters(Support.Models.FrontRequest)">
             <summary>
             Поиск информации по заданным параметрам
             </summary>
@@ -73,7 +73,7 @@
             Основной контроллер API - методы работы для парсинга данных
             </summary>
         </member>
-        <member name="M:parsing_api.Controllers.ParsingController.SetParsing(parsing_api.Models.ParsingRequest)">
+        <member name="M:parsing_api.Controllers.ParsingController.SetParsing(Support.Models.ParsingRequest)">
             <summary>
             Запрос на создание задания парсинга определенного веб-портала на указанную дату
             </summary>
@@ -163,7 +163,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:parsing_api.Data.DataBase.CreateJob(parsing_api.Models.ParsingRequest)">
+        <member name="M:parsing_api.Data.DataBase.CreateJob(Support.Models.ParsingRequest)">
             <summary>
             Метод создания нового задания парсинга данных
             </summary>
@@ -181,248 +181,6 @@
             </summary>
             <param name="guid"></param>
             <returns></returns>
-        </member>
-        <member name="T:parsing_api.Models.FrontRequest">
-            <summary>
-            Объект данных от frontend-части в API
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.FrontRequest.Number">
-            <summary>
-            Номер дела
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.FrontRequest.Region">
-            <summary>
-            Регион
-            </summary>
-        </member>
-        <member name="T:parsing_api.Models.ParsingJob">
-            <summary>
-            Модель задачи парсинга данных
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingJob.Id">
-            <summary>
-            Id в форме Guid задачи
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingJob.PortalId">
-            <summary>
-            Id веб-портала для задачи
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingJob.ResultCode">
-            <summary>
-            Текущий код выполнения задачи парсинга
-            0 - задача создана
-            1 - задача выполнена
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingJob.Time">
-            <summary>
-            Время запуска задачи
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingJob.TimeFrom">
-            <summary>
-            Время начала даты
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingJob.TimeTo">
-            <summary>
-            Время конца даты
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingJob.Error">
-            <summary>
-            Текст ошибки выполнения задачи (если произошла ошибка)
-            </summary>
-        </member>
-        <member name="T:parsing_api.Models.ParsingRequest">
-            <summary>
-            Модель запроса парсинга данных
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingRequest.Id">
-            <summary>
-            Id запроса
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingRequest.PortalId">
-            <summary>
-            Id веб-портала
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingRequest.TimeFrom">
-            <summary>
-            Дата начала парсинга
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingRequest.TimeTo">
-            <summary>
-            Дата конца парсинга
-            </summary>
-        </member>
-        <member name="T:parsing_api.Models.ParsingResponse">
-            <summary>
-            Данные парсинга по делу - объект возвращаемого результата пользователю
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Id">
-            <summary>
-            Id записи в БД
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.DateIn">
-            <summary>
-            Дата поступления
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.DateCheck">
-            <summary>
-            Дата рассмотрения
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Sud">
-            <summary>
-            Суд
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Clause">
-            <summary>
-            Статьи
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Decision">
-            <summary>
-            Решение
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Locality">
-            <summary>
-            Населенный пункт
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Region">
-            <summary>
-            Регион
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Instance">
-            <summary>
-            Инстанция
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Link">
-            <summary>
-            Ссылка на сайте суда
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.DateAppeal">
-            <summary>
-            Дата апелляции
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Gender">
-            <summary>
-            Пол ответчиков
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Judge">
-            <summary>
-            Судья
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.Number">
-            <summary>
-            Номер дела в суде
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.ParsingResponse.DecisionText">
-            <summary>
-            Текст решения
-            </summary>
-        </member>
-        <member name="T:parsing_api.Models.Portal">
-            <summary>
-            Модель объекта веб-портала для парсинга
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.Portal.Id">
-            <summary>
-            Id веб-портала
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.Portal.Name">
-            <summary>
-            Имя веб-портала (название, описание)
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.Portal.Link">
-            <summary>
-            Ссылка на веб-портал
-            </summary>
-        </member>
-        <member name="T:parsing_api.Models.Portals.IPortal">
-            <summary>
-            Интерфейс объекта веб-портала
-            </summary>
-        </member>
-        <member name="M:parsing_api.Models.Portals.IPortal.GetHtml(parsing_api.Models.ParsingRequest,System.Int32)">
-            <summary>
-            Метод получения HTML от веб-портала 
-            </summary>
-            <param name="parsingRequest"></param>
-            <param name="clause"></param>
-            <returns></returns>
-        </member>
-        <member name="M:parsing_api.Models.Portals.IPortal.ParseHtml(System.String)">
-            <summary>
-            Парсинг полученного HTML портала
-            </summary>
-            <param name="html"></param>
-            <returns></returns>
-        </member>
-        <member name="T:parsing_api.Models.Portals.Pravosudie.PravosudieRoot">
-            <summary>
-            Корневой элемент объекта данных Post-запроса
-            </summary>
-        </member>
-        <member name="T:parsing_api.Models.Portals.Pravosudie.PravosudiePortal">
-            <summary>
-            Веб-портал ГАС Правосудие
-            https://bsr.sudrf.ru/
-            </summary>
-        </member>
-        <member name="M:parsing_api.Models.Portals.Pravosudie.PravosudiePortal.GetHtml(parsing_api.Models.ParsingRequest,System.Int32)">
-            <summary>
-            Получить HTML-код
-            </summary>
-            <param name="parsingRequest"></param>
-            <returns></returns>
-        </member>
-        <member name="M:parsing_api.Models.Portals.Pravosudie.PravosudiePortal.ParseHtml(System.String)">
-            <summary>
-            Парсинг HTML-кода в объект ParsingResponse
-            </summary>
-            <param name="html"></param>
-            <returns></returns>
-        </member>
-        <member name="T:parsing_api.Models.Region">
-            <summary>
-            Модель объекта региона страны
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.Region.Id">
-            <summary>
-            Id региона
-            </summary>
-        </member>
-        <member name="P:parsing_api.Models.Region.Name">
-            <summary>
-            Название региона
-            </summary>
         </member>
         <member name="T:parsing_api.Program">
             <summary>

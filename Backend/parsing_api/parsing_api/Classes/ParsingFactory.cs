@@ -1,8 +1,8 @@
 ﻿using parsing_api.Data;
-using parsing_api.Models;
-using parsing_api.Models.Portals;
-using parsing_api.Models.Portals.Pravosudie;
 using Support;
+using Support.Models;
+using Support.Models.Portals;
+using Support.Models.Portals.Pravosudie;
 
 namespace parsing_api.Classes
 {

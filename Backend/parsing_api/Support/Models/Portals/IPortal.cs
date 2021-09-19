@@ -1,4 +1,4 @@
-﻿namespace parsing_api.Models.Portals
+﻿namespace Support.Models.Portals
 {
     /// <summary>
     /// Интерфейс объекта веб-портала
@@ -11,13 +11,13 @@
         /// <param name="parsingRequest"></param>
         /// <param name="clause"></param>
         /// <returns></returns>
-        public string GetHtml(ParsingRequest parsingRequest, int clause);
+        string GetHtml(ParsingRequest parsingRequest, int clause);
 
         /// <summary>
         /// Парсинг полученного HTML портала
         /// </summary>
         /// <param name="html"></param>
         /// <returns></returns>
-        public ParsingResponse ParseHtml(string html);
+        ParsingResponse ParseHtml(string html);
     }
 }

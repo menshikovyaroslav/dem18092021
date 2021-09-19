@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace parsing_api.Models.Portals.Pravosudie
+namespace Support.Models.Portals.Pravosudie
 {
     /// <summary>
     /// Корневой элемент объекта данных Post-запроса

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace parsing_api.Models
+namespace Support.Models
 {
     /// <summary>
     /// Данные парсинга по делу - объект возвращаемого результата пользователю

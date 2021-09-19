@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +44,15 @@
   <ItemGroup>
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="Models\FrontRequest.cs" />
+    <Compile Include="Models\ParsingJob.cs" />
+    <Compile Include="Models\ParsingRequest.cs" />
+    <Compile Include="Models\ParsingResponse.cs" />
+    <Compile Include="Models\Portal.cs" />
+    <Compile Include="Models\Portals\IPortal.cs" />
+    <Compile Include="Models\Portals\Pravosudie\PravosudieDataObject.cs" />
+    <Compile Include="Models\Portals\Pravosudie\PravosudiePortal.cs" />
+    <Compile Include="Models\Region.cs" />
     <Compile Include="Request\GetRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Request\PostRequest.cs" />

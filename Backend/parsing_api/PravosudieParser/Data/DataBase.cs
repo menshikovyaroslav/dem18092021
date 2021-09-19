@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace parsing_api.Data
+namespace PravosudieParser.Data
 {
     /// <summary>
     /// Класс для выполнения запросов в БД

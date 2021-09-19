@@ -1,4 +1,4 @@
-﻿namespace parsing_api.Models
+﻿namespace Support.Models
 {
     /// <summary>
     /// Объект данных от frontend-части в API
