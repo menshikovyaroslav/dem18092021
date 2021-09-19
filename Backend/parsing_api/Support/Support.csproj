@@ -50,6 +50,7 @@
     <Compile Include="Models\ParsingResponse.cs" />
     <Compile Include="Models\Portal.cs" />
     <Compile Include="Models\Portals\IPortal.cs" />
+    <Compile Include="Models\Portals\Novosibirsk\NskDzer1Portal.cs" />
     <Compile Include="Models\Portals\Pravosudie\PravosudieDataObject.cs" />
     <Compile Include="Models\Portals\Pravosudie\PravosudiePortal.cs" />
     <Compile Include="Models\Region.cs" />

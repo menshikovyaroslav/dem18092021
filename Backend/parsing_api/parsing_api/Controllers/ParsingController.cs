@@ -2,6 +2,7 @@
 using parsing_api.Classes;
 using parsing_api.Data;
 using Support.Models;
+using System.Web.Http.Cors;
 
 namespace parsing_api.Controllers
 {
@@ -18,8 +19,9 @@ namespace parsing_api.Controllers
         /// <param name="parsingRequest"></param>
         /// <returns></returns>
         [Route("api/newjob")]
+        [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
         [AllowCrossSiteJson]
-        [HttpPost]
+        [HttpGet]
         public ActionResult<string> SetParsing(ParsingRequest parsingRequest)
         {
             // получили запрос на парсинг, отправляем задачу на исполнение
@@ -34,6 +36,7 @@ namespace parsing_api.Controllers
         /// <returns></returns>
         [Route("api/jobs")]
         [AllowCrossSiteJson]
+        [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
         [HttpGet]
         public ActionResult<string> GetJobs()
         {
@@ -48,6 +51,7 @@ namespace parsing_api.Controllers
         /// <returns></returns>
         [Route("api/job")]
         [AllowCrossSiteJson]
+        [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
         [HttpGet]
         public ActionResult<string> GetJob(string jobId)
         {

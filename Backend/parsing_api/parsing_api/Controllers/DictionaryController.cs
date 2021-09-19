@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using parsing_api.Classes;
 using parsing_api.Data;
+using System.Web.Http.Cors;
 
 namespace parsing_api.Controllers
 {
@@ -15,6 +16,7 @@ namespace parsing_api.Controllers
         /// <returns></returns>
         [Route("api/regions")]
         [AllowCrossSiteJson]
+        [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
         [HttpGet]
         public ActionResult<string> GetRegions()
         {
@@ -28,6 +30,7 @@ namespace parsing_api.Controllers
         /// <returns></returns>
         [Route("api/portals")]
         [AllowCrossSiteJson]
+        [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
         [HttpGet]
         public ActionResult<string> GetPortals()
         {

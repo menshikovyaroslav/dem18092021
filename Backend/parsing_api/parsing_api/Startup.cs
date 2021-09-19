@@ -38,6 +38,8 @@ namespace parsing_api
 
             services.AddMvc();
 
+            services.AddCors();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SecurityBand DemHack3 Parsing Api", Version = "v1" });
