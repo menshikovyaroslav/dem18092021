@@ -26,10 +26,10 @@
                 <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0" Text="Введите дату конца:" />
                 <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0" Text="Выберите статью:" />
 
-                <DatePicker Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,0,0,0" Width="100" />
-                <DatePicker Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,0,0,0" />
+                <DatePicker Name="DateFrom" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,0,0,0" Width="100" />
+                <DatePicker Name="DateTo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="10,0,0,0" />
 
-                <ComboBox Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Width="180" Height="30">
+                <ComboBox Name="ClauseCb" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Width="180" Height="30">
                     <ComboBoxItem Content="137" IsSelected="True" />
                     <ComboBoxItem Content="138"/>
                     <ComboBoxItem Content="272"/>

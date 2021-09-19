@@ -28,15 +28,46 @@ namespace PravosudieParser
             InitializeComponent();
         }
 
-        private void StartParser_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Обработка нажатия кнопки старта парсинга
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void StartParser_Click(object sender, RoutedEventArgs e)
         {
+            if (DateFrom.SelectedDate == null || DateTo.SelectedDate == null)
+            {
+                MessageBox.Show("Проверьте ввод даты начала и даты конца !");
+                return;
+            }
+
+            var dateFrom = (DateTime)DateFrom.SelectedDate;
+            var dateTo = (DateTime)DateTo.SelectedDate;
+
             IWebDriver driver = new ChromeDriver();
             driver.Url = @"https://bsr.sudrf.ru/bigs/portal.html";
-            Thread.Sleep(5000);
-            driver.FindElement(By.CssSelector(".date-filter-from")).SendKeys(DateTime.Now.AddDays(-30).ToString("d"));
-            driver.FindElement(By.CssSelector(".date-filter-to")).SendKeys(DateTime.Now.AddDays(-29).ToString("d"));
-            Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//input[@placeholder='Введите номер дела']")).SendKeys("137");
+
+            // ожидаем загрузки страницы
+            for (int i = 0; i < 10; i++)
+            {
+                try
+                {
+                    driver.FindElement(By.CssSelector(".date-filter-from"));
+                    await Task.Delay(1000);
+                    break;
+                }
+                catch (Exception)
+                {
+                    await Task.Delay(1000);
+                }
+            }
+
+            driver.FindElement(By.CssSelector(".date-filter-from")).SendKeys(dateFrom.ToString("d"));
+            driver.FindElement(By.CssSelector(".date-filter-to")).SendKeys(dateTo.ToString("d"));
+
+            await Task.Delay(1000);
+
+            driver.FindElement(By.XPath("//input[@placeholder='Введите номер дела']")).SendKeys(ClauseCb.Text);
         }
     }
 }
