@@ -91,7 +91,15 @@
 		</v-col>
 		<v-col class="col-12 col-md-9">
 			<v-card class="cases-table__table pt-4">
-				<h2>Список дел</h2>
+				<div class="d-flex">
+					<h2 class="mx-auto">Список дел</h2>
+
+					<v-btn
+						@click="downloadExcel"
+						class="mr-4"
+					>Выгрузить</v-btn>
+				</div>
+
 				<v-data-table
 					@click:row="handleRowClick"
 					hide-default-footer
@@ -178,6 +186,10 @@
 		},
 		methods: {
 			...mapActions(["searchCases"]),
+
+			downloadExcel() {
+				console.log(`casesList`, this.casesList)
+			},
 
 			handleRowClick() {
 				console.log("table row clicked");
