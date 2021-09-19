@@ -107,7 +107,7 @@ export default new Vuex.Store({
 			}
 		},
 
-		async searchCases({ commit }, data) {
+		async searchCases({ state, commit }, data) {
 			try {
 				const parsedData = {
 					region: data.region ? data.region.id : null,
@@ -131,7 +131,21 @@ export default new Vuex.Store({
 				)
 
 				const casesList = await Api.getCasesList(fullFilterData)
-				commit('SET_STATE', { key: 'casesList', value: casesList })
+				const parsedCasesList = casesList.map(item => ({
+					...item,
+					regionName: item.region
+						? state.regionsList.find(el => el.id === item.region)
+								.name
+						: 'Не определен',
+					court: item.sud,
+					dateStart: item.dateIn,
+					dateEnd: item.dateCheck,
+					desition: item.decisionText
+				}))
+				commit('SET_STATE', {
+					key: 'casesList',
+					value: parsedCasesList
+				})
 			} catch (e) {
 				this._vm.$snackbar({
 					type: 'error',

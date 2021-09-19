@@ -157,6 +157,7 @@
 				{ text: "Инстанция", value: "instance", sortable: true },
 				{ text: "ФИО подсудимого", value: "fio", sortable: true },
 				{ text: "ФИО судьи", value: "judge", sortable: true },
+				{ text: "Решение", value: "desition", sortable: true },
 			],
 		}),
 		watch: {
@@ -229,7 +230,16 @@
 		},
 		async created() {
 			try {
-				await this.searchCases({});
+				await this.searchCases({
+					region: null,
+					caseNumber: null,
+					date: null,
+					court: null,
+					clause: null,
+					instance: null,
+					fio: null,
+					judge: null,
+				});
 			} finally {
 				this.loadingList = false;
 			}
