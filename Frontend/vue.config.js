@@ -19,5 +19,6 @@ module.exports = {
 	},
   transpileDependencies: [
     'vuetify'
-  ]
+  ],
+	publicPath: '/dem18092021/',
 }
