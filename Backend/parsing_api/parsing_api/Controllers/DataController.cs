@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using Support.Extensions;
 using System.Linq;
+using System.Web.Http.Cors;
 
 namespace parsing_api.Controllers
 {
@@ -22,6 +23,7 @@ namespace parsing_api.Controllers
         /// <returns></returns>
         [Route("api/getcases")]
         [AllowCrossSiteJson]
+        [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
         [HttpPost]
         public ActionResult<string> GetCases(FrontRequest frontRequest)
         {
