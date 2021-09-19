@@ -120,8 +120,11 @@
 <script>
 	import { mapState, mapActions } from "vuex";
 	import { formatDate, debounce } from "@utils/";
+	import excelConvertMixin from '@/mixins/excel-convert.mixin'
+
 	export default {
 		name: "CasesTable",
+		mixins: [excelConvertMixin],
 		data: () => ({
 			loadingList: true,
 			caseNumbersList: ["137", "138", "272", "274"],
@@ -188,7 +191,15 @@
 			...mapActions(["searchCases"]),
 
 			downloadExcel() {
-				console.log(`casesList`, this.casesList)
+				if (!this.casesList.length)
+					return
+
+				const filenameStr = `Список дел`,
+							newKeys = this.headers.reduce((obj, el) => Object.assign(obj, {[el.value]: el.text}), {}),
+							json = this.convertJsonData(this.casesList, newKeys),
+							workbook = this.convertToXLSX(json, filenameStr)
+
+				this.downloadCreatedFile({workbook, filenameStr})
 			},
 
 			handleRowClick() {
