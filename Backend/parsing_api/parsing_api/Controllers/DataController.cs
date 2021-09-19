@@ -4,6 +4,9 @@ using parsing_api.Data;
 using Support;
 using Support.Models;
 using System;
+using System.Collections.Generic;
+using Support.Extensions;
+using System.Linq;
 
 namespace parsing_api.Controllers
 {
@@ -22,7 +25,25 @@ namespace parsing_api.Controllers
         [HttpPost]
         public ActionResult<string> GetCases(FrontRequest frontRequest)
         {
-            return Ok($"");
+            Log.Instance.Info($"x1: {frontRequest.DateFrom}");
+            Log.Instance.Info($"x1-1: {frontRequest.DateTo}");
+
+            // получаем все кейсы
+            var result = DataBase.GetAllCases();
+
+            Log.Instance.Info($"x2: {result.Count}");
+
+            // фильтр по номеру кейса
+            if (!frontRequest.Number.IsEmpty()) result = result.Where(c => c.Number == frontRequest.Number).ToList();
+
+            Log.Instance.Info($"x3: {result.Count}");
+
+            // фильтр по дате поступления дела
+            result = result.Where(c => c.DateIn >= frontRequest.DateFrom && c.DateIn <= frontRequest.DateTo).ToList();
+
+            Log.Instance.Info($"x4: {result.Count}");
+
+            return Ok(result);
         }
     }
 }
