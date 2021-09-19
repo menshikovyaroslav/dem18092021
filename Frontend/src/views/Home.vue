@@ -1,72 +1,45 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col
-        cols="4"
-        class="mt-4"
-      >
-        <v-select
-          v-model="chosenData.region"
-          :items="regionList"
-          label="Регион"
-          item-text="name"
-          return-object
-          dense
-        />
-      </v-col>
-      <v-col
-        cols="4"
-        class="mt-4"
-      >
-        <v-select
-          v-model="chosenData.portal"
-          :items="portalList"
-          label="Портал"
-          item-text="name"
-          return-object
-          dense
-        />
-      </v-col>
-    </v-row>
-  </v-container>
+	<v-container fluid>
+		<v-fade-transition>
+			<spinner-loader v-if="!isAppReady" />
+
+			<v-row v-else class="text-center">
+				<v-col class="mt-4 col-12 col-md-3">
+					<job-form />
+				</v-col>
+
+				<v-col class="mt-4 col-12 col-md-9">
+					<jobs-table />
+				</v-col>
+			</v-row>
+		</v-fade-transition>
+	</v-container>
 </template>
 
 <script>
-import axios from 'axios'
+	import { mapState, mapActions } from "vuex";
+	import SpinnerLoader from "@components/SpinnerLoader.vue";
+	import JobForm from "@components/JobForm.vue";
+	import JobsTable from "@components/JobsTable.vue";
 
-export default {
-  name: 'Home',
-  data() {
-    return {
-      chosenData: {
-        region: {
-          name: '',
-          id: 0,
-        },
-        portal: {
-          name: '',
-          id: 0,
-          link: '',
-        },
-      },
-      regionList: [],
-      portalList: [],
-    }
-  },
-  methods: {},
-  mounted() {
-    axios({
-      url: 'http://94.180.116.89:5522/api/regions',
-      method: 'get',
-    })
-      .then(res => this.regionList = res.data)
-      .catch(error => console.log(`error`, error))
-    axios({
-      url: 'http://94.180.116.89:5522/api/portals',
-      method: 'get',
-    })
-      .then(res => this.portalList = res.data)
-      .catch(error => console.log(`error`, error))
-  },
-}
+	export default {
+		name: "MainPage",
+		components: {
+			SpinnerLoader,
+			JobForm,
+			JobsTable,
+		},
+		computed: {
+			...mapState(["isAppReady"]),
+		},
+		methods: {
+			...mapActions(["initiateApp"]),
+		},
+		created() {
+			this.initiateApp();
+		},
+	};
 </script>
+
+<style scoped lang="scss">
+</style>

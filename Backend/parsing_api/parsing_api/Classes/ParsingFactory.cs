@@ -1,9 +1,8 @@
-﻿using parsing_api.Models;
-using parsing_api.Models.Portals;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using parsing_api.Data;
+using Support;
+using Support.Models;
+using Support.Models.Portals;
+using Support.Models.Portals.Pravosudie;
 
 namespace parsing_api.Classes
 {
@@ -19,9 +18,20 @@ namespace parsing_api.Classes
         public static void Parse(ParsingRequest parsingRequest)
         {
             var portal = GetPortal(parsingRequest.PortalId);
-            if (portal == null) Log.Instance.Error(3, "Портал не прописан в методе GetPortal !");
+            if (portal == null)
+            {
+                Log.Instance.Error(3, "Портал не прописан в методе GetPortal !");
+                return;
+            }
 
+            // создадим новую задачу парсинга
+            DataBase.CreateJob(parsingRequest);
 
+            // получить HTML-код веб-портала
+            var html = portal.GetHtml(parsingRequest, 137);
+
+            // парсинг HTML кода в красивый универсальный объект
+            var parsingResponse = portal.ParseHtml(html);
         }
 
         /// <summary>

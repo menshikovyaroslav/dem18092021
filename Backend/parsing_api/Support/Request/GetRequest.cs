@@ -7,11 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Cache;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Request.Support
 {
+    /// <summary>
+    /// Метод реализации Get запроса
+    /// </summary>
     public class GetRequest
     {
         #region private fields
@@ -49,6 +50,7 @@ namespace Request.Support
             _headers = new Dictionary<string, string>();
         }
 
+        // выполнить запрос
         public void Run(ref CookieContainer cookies)
         {
             _request = (HttpWebRequest)WebRequest.Create(Address);
@@ -149,6 +151,7 @@ namespace Request.Support
 
         }
 
+        // добавить дополнительный заголовок в запрос
         public void AddHeader(string headerName, string headerValue)
         {
             _headers[headerName] = headerValue;
