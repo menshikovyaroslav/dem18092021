@@ -1,6 +1,7 @@
 <template>
 	<v-row class="cases-table">
 		<v-col class="cases-table__filter col-12 col-md-3">
+			<h2 class="mb-3">Фильтр дел</h2>
 			<v-select
 				v-model="filter.region"
 				:items="regionsList"
@@ -76,6 +77,15 @@
 				dense
 				outlined
 			></v-text-field>
+
+			<v-btn
+				tile
+				text
+				color="primary"
+				@click="clearFilter"
+				:disabled="!isFilterClearable"
+				>Очистить фильтр</v-btn
+			>
 		</v-col>
 		<v-col class="col-12 col-md-9">
 			<div class="cases-table__table">
@@ -99,7 +109,7 @@
 
 <script>
 	import { mapState, mapActions } from "vuex";
-	import { formatDate } from "@utils/";
+	import { formatDate, debounce } from "@utils/";
 	export default {
 		name: "CasesTable",
 		data: () => ({
@@ -136,6 +146,16 @@
 				{ text: "ФИО судьи", value: "judge", sortable: true },
 			],
 		}),
+		watch: {
+			filter: {
+				deep: true,
+				handler: function () {
+					console.log(this);
+					this.searchCasesDebounced();
+				},
+			},
+		},
+
 		computed: {
 			...mapState(["casesList", "regionsList"]),
 
@@ -145,12 +165,37 @@
 					.map((date) => formatDate(date))
 					.join(" - ");
 			},
+
+			isFilterClearable() {
+				return Object.values(this.filter).some((val) => val !== null);
+			},
+
+			searchCasesDebounced() {
+				return debounce(this.searchFilteredCases, 1000);
+			},
 		},
 		methods: {
 			...mapActions(["searchCases"]),
 
 			handleRowClick() {
 				console.log("table row clicked");
+			},
+
+			searchFilteredCases() {
+				console.log("search");
+				this.searchCases(this.filter);
+			},
+			clearFilter() {
+				this.filter = {
+					region: null,
+					caseNumber: null,
+					date: null,
+					court: null,
+					clause: null,
+					instance: null,
+					fio: null,
+					judge: null,
+				};
 			},
 		},
 		async created() {
@@ -164,9 +209,7 @@
 </script>
 
 <style scoped lang="scss">
-	.jobs-table {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+	.cases-table {
+		padding-top: 30px;
 	}
 </style>

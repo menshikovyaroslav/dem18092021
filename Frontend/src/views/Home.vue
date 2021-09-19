@@ -18,6 +18,7 @@
 				</v-col>
 
 				<v-col class="col-12">
+					<v-divider class="home__divider"></v-divider>
 					<cases-table />
 				</v-col>
 			</v-row>
@@ -55,4 +56,9 @@
 </script>
 
 <style scoped lang="scss">
+	.home {
+		&__divider {
+			margin-top: 30px;
+		}
+	}
 </style>
