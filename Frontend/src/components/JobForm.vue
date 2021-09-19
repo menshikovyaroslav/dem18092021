@@ -67,8 +67,8 @@
 			formLoading: false,
 
 			rules: {
-				selectedRegion: [(v) => !!v ?? "Необходимо выбрать регион."],
-				selectedPortal: [(v) => !!v ?? "Необходимо выбрать портал."],
+				selectedRegion: [(v) => !!v || "Необходимо выбрать регион."],
+				selectedPortal: [(v) => !!v || "Необходимо выбрать портал."],
 			},
 		}),
 		computed: {
