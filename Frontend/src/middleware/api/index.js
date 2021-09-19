@@ -27,5 +27,9 @@ export default {
 		return axios
 			.post(`${baseURL}/api/getbyparameters`, data)
 			.then(r => r.data)
+	},
+
+	getCasesList(filter) {
+		return axios.post(`${baseURL}/api/getcases`, filter).then(r => r.data)
 	}
 }

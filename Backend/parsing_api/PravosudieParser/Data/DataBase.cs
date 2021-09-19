@@ -43,5 +43,29 @@ namespace PravosudieParser.Data
                 Log.Instance.Error(4, ex.Message);
             }
         }
+
+        /// <summary>
+        /// Получить Id региона по его имени
+        /// </summary>
+        /// <returns></returns>
+        public static int GetRegionIdByName(string name)
+        {
+            Log.Instance.Info($"GetRegionIdByName:{name}");
+            int result = 0;
+            try
+            {
+                using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
+                {
+                    var objects = db.Regions.Where(r => r.Name.ToLower() == name.ToLower() || (r.Aliases != null && r.Aliases.Contains(name)));
+                    if (objects.Count() > 0) result = objects.First().Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Error(1, ex.Message);
+            }
+
+            return result;
+        }
     }
 }

@@ -38,17 +38,11 @@
             Контроллер для получения клиентской информации из БД
             </summary>
         </member>
-        <member name="M:parsing_api.Controllers.DataController.LogCount">
+        <member name="M:parsing_api.Controllers.DataController.GetCasesByNumber(Support.Models.FrontRequest)">
             <summary>
-            Ненужный запрос - скоро удалим
+            Поиск кейсов по параметрам
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:parsing_api.Controllers.DataController.GetByParameters(Support.Models.FrontRequest)">
-            <summary>
-            Поиск информации по заданным параметрам
-            </summary>
-            <param name="frontRequest">Объект с заданными параметрами</param>
+            <param name="frontRequest"></param>
             <returns></returns>
         </member>
         <member name="T:parsing_api.Controllers.DictionaryController">

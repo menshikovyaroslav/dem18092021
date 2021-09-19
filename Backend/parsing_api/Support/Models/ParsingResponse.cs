@@ -55,7 +55,7 @@ namespace Support.Models
         /// Регион
         /// </summary>
         [Column("region")]
-        public string Region { get; set; }
+        public int Region { get; set; }
 
         /// <summary>
         /// Инстанция
