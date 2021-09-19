@@ -62,12 +62,19 @@ namespace PravosudieParser
                 }
             }
 
+            // ввод даты начала и даты конца
             driver.FindElement(By.CssSelector(".date-filter-from")).SendKeys(dateFrom.ToString("d"));
             driver.FindElement(By.CssSelector(".date-filter-to")).SendKeys(dateTo.ToString("d"));
 
             await Task.Delay(1000);
 
-            driver.FindElement(By.XPath("//input[@placeholder='Введите номер дела']")).SendKeys(ClauseCb.Text);
+            // ввод статьи
+            driver.FindElement(By.XPath("//input[@placeholder='Введите статью или категорию дела']")).SendKeys(ClauseCb.Text);
+
+            await Task.Delay(500);
+            
+            // нажать на кнопку Найти
+            driver.FindElement(By.XPath("//input[@id='searchFormButton']")).Click();
         }
     }
 }
