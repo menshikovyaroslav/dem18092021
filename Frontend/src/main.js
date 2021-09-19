@@ -6,9 +6,10 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import bus from './utils/bus.plugin'
 
-//  Plagins
+//  Plugins
 import delayPlagin from './utils/delay.plugin'
 import throttlePlagin from './utils/throttle.plugin'
+import './plugins/snackbar.js'
 
 Vue.use(delayPlagin)
 Vue.use(throttlePlagin)
@@ -16,9 +17,9 @@ Vue.use(throttlePlagin)
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  vuetify,
-  bus,
-  render: h => h(App)
+	router,
+	store,
+	vuetify,
+	bus,
+	render: h => h(App)
 }).$mount('#app')

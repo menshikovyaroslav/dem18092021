@@ -26,6 +26,7 @@
 <style lang="scss" scoped>
 	.spinner-loader {
 		width: 100%;
+		min-height: calc(100vh - 56px);
 		height: 100%;
 		display: flex;
 		align-items: center;
