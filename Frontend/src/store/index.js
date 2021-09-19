@@ -91,7 +91,28 @@ export default new Vuex.Store({
 
 		async searchCases({ commit }, data) {
 			try {
-				const casesList = await Api.getCasesList(data)
+				const parsedData = {
+					region: data.region ? data.region.id : null,
+					number: data.caseNumber,
+					dateFrom: data.date
+						? new Date(data.date[0]).toISOString()
+						: null,
+					dateTo:
+						data.date && data.date[1]
+							? new Date(data.date[1]).toISOString()
+							: null,
+					sud: data.court,
+					clause: data.clause,
+					instance: data.instance,
+					fio: data.fio,
+					judge: data.judge
+				}
+
+				const fullFilterData = Object.fromEntries(
+					Object.entries(parsedData).filter(([, v]) => v != null)
+				)
+
+				const casesList = await Api.getCasesList(fullFilterData)
 				commit('SET_STATE', { key: 'casesList', value: casesList })
 			} catch (e) {
 				console.error(e)

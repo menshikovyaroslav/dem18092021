@@ -181,9 +181,13 @@
 				console.log("table row clicked");
 			},
 
-			searchFilteredCases() {
-				console.log("search");
-				this.searchCases(this.filter);
+			async searchFilteredCases() {
+				try {
+					this.loadingList = true;
+					await this.searchCases(this.filter);
+				} finally {
+					this.loadingList = false;
+				}
 			},
 			clearFilter() {
 				this.filter = {
