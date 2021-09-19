@@ -75,6 +75,45 @@ namespace PravosudieParser
             
             // нажать на кнопку Найти
             driver.FindElement(By.XPath("//input[@id='searchFormButton']")).Click();
+
+            await Task.Delay(2000);
+
+            driver.FindElement(By.XPath("//a[contains(.,'Уголовное дело')]")).Click();
+
+            var oldNumber = string.Empty;
+            while (true)
+            {
+                await Task.Delay(3000);
+
+                var number = IsContains(driver, "(//span[contains(@data-pos,'0')])[1]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[1]")).GetAttribute("textContent") : string.Empty;
+                var instance = IsContains(driver, "(//span[contains(@data-pos,'0')])[4]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[4]")).GetAttribute("textContent") : string.Empty;
+                var clause = IsContains(driver, "(//span[contains(@data-pos,'0')])[5]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[5]")).GetAttribute("textContent") : string.Empty;
+
+                var regionString = IsContains(driver, "(//span[contains(@data-pos,'0')])[6]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[6]")).GetAttribute("textContent") : string.Empty;
+                var result = IsContains(driver, "(//span[contains(@data-pos,'0')])[7]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[7]")).GetAttribute("textContent") : string.Empty;
+
+                var judge = IsContains(driver, "(//span[contains(@data-pos,'0')])[2]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[2]")).GetAttribute("textContent") : string.Empty;
+                var person = IsContains(driver, "(//td[@class='one-table-value'])[1]") ? driver.FindElement(By.XPath("(//td[@class='one-table-value'])[1]")).GetAttribute("textContent") : string.Empty;
+
+
+                if (oldNumber == number) break;
+
+                driver.FindElement(By.XPath("(//span[@title='Вперед'])[3]")).Click();
+            }
+        }
+
+        private bool IsContains(IWebDriver driver, string element)
+        {
+            try
+            {
+                var el = driver.FindElement(By.XPath(element)).GetAttribute("textContent");
+                if (el == "Не заполнено") return false;
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
         }
     }
 }
