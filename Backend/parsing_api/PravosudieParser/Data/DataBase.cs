@@ -50,13 +50,14 @@ namespace PravosudieParser.Data
         /// <returns></returns>
         public static int GetRegionIdByName(string name)
         {
+            Log.Instance.Info($"GetRegionIdByName:{name}");
             int result = 0;
-            var length = name.Length / 2;
             try
             {
                 using (var db = new BackendDb(new DbContextOptionsBuilder<BackendDb>().UseNpgsql(connString).Options))
                 {
-                    result = db.Regions.SingleOrDefault(r => r.Name.ToLower() == name.ToLower() || (r.Aliases != null && r.Aliases.Contains(name))).Id;
+                    var objects = db.Regions.Where(r => r.Name.ToLower() == name.ToLower() || (r.Aliases != null && r.Aliases.Contains(name)));
+                    if (objects.Count() > 0) result = objects.First().Id;
                 }
             }
             catch (Exception ex)
