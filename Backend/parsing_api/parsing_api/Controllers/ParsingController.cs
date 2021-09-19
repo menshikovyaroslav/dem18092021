@@ -21,7 +21,7 @@ namespace parsing_api.Controllers
         [Route("api/newjob")]
         [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
         [AllowCrossSiteJson]
-        [HttpPost]
+        [HttpGet]
         public ActionResult<string> SetParsing(ParsingRequest parsingRequest)
         {
             // получили запрос на парсинг, отправляем задачу на исполнение

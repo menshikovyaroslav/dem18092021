@@ -24,7 +24,7 @@ namespace parsing_api.Controllers
         [Route("api/getcases")]
         [AllowCrossSiteJson]
         [EnableCors(origins: "http://localhost", headers: "*", methods: "*")]
-        [HttpPost]
+        [HttpGet]
         public ActionResult<string> GetCases(FrontRequest frontRequest)
         {
             Log.Instance.Info($"x1: {frontRequest.DateFrom}");
