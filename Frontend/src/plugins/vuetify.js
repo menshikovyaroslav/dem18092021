@@ -13,26 +13,27 @@ Vue.use(Vuetify)
 
 //  Config
 const opts = {
-  lang: {
-    locales: { ru, en },
-    current: 'ru',
-  },
+	lang: {
+		locales: { ru, en },
+		current: 'ru'
+	},
 
-  theme: {
-    dark: false,
-  },
-  themes: {
-    light: {
-      primary: colors.blueGrey.lighten2,
-      secondary: colors.blueGrey.darken3,
-      accent: colors.blueGrey.darken4,
-    },
-    dark: {
-      primary: colors.blueGrey.darken3,
-      secondary: colors.blueGrey.lighten2,
-      accent: colors.blueGrey.lighten5,
-    },
-  },
+	theme: {
+		dark: false,
+
+		themes: {
+			light: {
+				primary: colors.blue.darken4,
+				secondary: colors.blueGrey.darken3,
+				accent: colors.blueGrey.darken4
+			},
+			dark: {
+				primary: colors.blueGrey.darken3,
+				secondary: colors.blueGrey.lighten2,
+				accent: colors.blueGrey.lighten5
+			}
+		}
+	}
 }
 
 export default new Vuetify(opts)
