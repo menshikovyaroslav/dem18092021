@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PravosudieParser.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="connectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Server=127.0.0.1;Port=5432;User Id=backenduser;Password=Qwerty123;Database=demhack3;CommandTimeOut=5000</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>
