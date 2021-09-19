@@ -4,7 +4,7 @@
 			<spinner-loader v-if="!isAppReady" />
 
 			<v-row v-else class="text-center">
-				<v-col class="mt-4 col-12 col-md-3">
+				<v-col class="mt-4 col-12 col-md-3 pb-0">
 					<job-form />
 				</v-col>
 

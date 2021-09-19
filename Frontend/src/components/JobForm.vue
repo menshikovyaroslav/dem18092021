@@ -95,4 +95,7 @@
 </script>
 
 <style lang="scss" scoped>
+.v-card {
+	height: 100%;
+}
 </style>
