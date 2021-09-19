@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Support.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,8 +96,18 @@ namespace PravosudieParser
                 var judge = IsContains(driver, "(//span[contains(@data-pos,'0')])[2]") ? driver.FindElement(By.XPath("(//span[contains(@data-pos,'0')])[2]")).GetAttribute("textContent") : string.Empty;
                 var person = IsContains(driver, "(//td[@class='one-table-value'])[1]") ? driver.FindElement(By.XPath("(//td[@class='one-table-value'])[1]")).GetAttribute("textContent") : string.Empty;
 
-
                 if (oldNumber == number) break;
+
+                var parsingObject = new ParsingResponse()
+                {
+                    Number = number,
+                    Instance = instance,
+                    Clause = clause,
+                    Region = regionString,
+                    Fio = person,
+                    Judge = judge,
+
+                };
 
                 driver.FindElement(By.XPath("(//span[@title='Вперед'])[3]")).Click();
             }

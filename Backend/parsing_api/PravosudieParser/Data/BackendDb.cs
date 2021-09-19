@@ -11,22 +11,7 @@ namespace PravosudieParser.Data
         /// <summary>
         /// Данные запросов парсинга
         /// </summary>
-        public DbSet<ParsingRequest> ParsingRequests { get; set; }
-
-        /// <summary>
-        /// Таблица регионов страны
-        /// </summary>
-        public DbSet<Region> Regions { get; set; }
-
-        /// <summary>
-        /// Таблица веб-порталов для парсинга
-        /// </summary>
-        public DbSet<Portal> Portals { get; set; }
-
-        /// <summary>
-        /// Данные запросов на парсинг
-        /// </summary>
-        public DbSet<ParsingJob> ParsingJobs { get; set; }
+        public DbSet<ParsingResponse> ParsingResponses { get; set; }
 
         /// <summary>
         /// Инициализация контекста работы с БД
